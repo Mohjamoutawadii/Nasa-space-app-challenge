@@ -1,15 +1,6 @@
 # 🚀 ASTROHEROES: JUNIOR MOON EXPLORER 🌕
 ### Don't just learn about space. Become part of the mission!
 
-<p align="center">
-  <img src="https://img.shields.io/badge/NASA-Space%20Apps%20Challenge-0B3D91?style=for-the-badge&logo=nasa&logoColor=white" />
-  <img src="https://img.shields.io/badge/Project-Space%20Exploration-6C63FF?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Status-In%20Development-orange?style=for-the-badge" />
-</p>
-
----
-
-## We have a mission!
 
 **Welcome, Future Astronaut!**
 
