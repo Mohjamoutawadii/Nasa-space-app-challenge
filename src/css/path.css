@@ -50,7 +50,7 @@ body {
     font-size: 15px;
 }
 
-/* MAP */
+
 
 .journey-map {
     position: relative;
@@ -68,7 +68,6 @@ body {
     overflow: visible;
 }
 
-/* POINTS */
 
 .map-point {
     position: absolute;
@@ -99,14 +98,9 @@ body {
     filter: grayscale(1);
 }
 
-.active-circle {
-    background: #159fdc;
-    border-color: #d9f5ff;
-    box-shadow: 0 6px 0 #0875a8, 0 0 18px #69d9ff;
-    animation: pulse 2s infinite;
-}
 
-.active-circle span,
+
+.span,
 .start-circle span,
 .certificate-circle span {
     filter: none;
@@ -137,11 +131,6 @@ body {
     white-space: nowrap;
 }
 
-.active-label {
-    background: #ffffff;
-    color: #159fdc;
-    border: 2px solid #159fdc;
-}
 
 .mission-name {
     margin-top: 8px;
@@ -151,24 +140,12 @@ body {
     max-width: 170px;
 }
 
-.stars {
-    margin-top: 7px;
-    font-size: 17px;
-}
+
 .locked-point {
-    opacity: 0.45;
+    opacity: 0.95;
     pointer-events: none;
 }
 
-.unlocked-point {
-    opacity: 1;
-}
-
-.unlocked-point .point-circle {
-    cursor: pointer;
-}
-
-/* POSITIONS */
 
 .start-point {
     top: 20px;
@@ -195,7 +172,6 @@ body {
     left: 65%;
 }
 
-/* MOBILE */
 
 @media (max-width: 500px) {
 
@@ -274,7 +250,7 @@ body {
         top: 850px;
     }
 }
-/* By default: mobile layout */
+
 .desktop-route {
     display: none;
 }
@@ -283,7 +259,7 @@ body {
     display: block;
 }
 
-/* DESKTOP: HORIZONTAL JOURNEY */
+
 @media (min-width: 768px) {
 
     .journey-container {
