@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: #10152f;
+    color: white;
+    overflow: hidden;
+}
+
+.meeting-screen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(
+        circle at 50% 40%,
+        #202e5b 0%,
+        #10152f 65%,
+        #080d20 100%
+    );
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: 250px 250px;
+    pointer-events: none;
+}
+
+.top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.back-button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+
+#game-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+#game-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.dialogue-box {
+    position: absolute;
+    z-index: 4;
+
+    top: 50%;
+    right: 50%;
+    transform: translateY(-50%);
+
+    width: min(420px, 38%);
+    height: 20%;
+    padding: 28px;
+
+    background: rgba(10, 20, 55, 0.94);
+    border: 2px solid #69d9ff;
+    border-radius: 25px;
+
+    color: white;
+    text-align: left;
+
+    box-shadow: 0 0 25px rgba(105, 217, 255, 0.25);
+}
+
+
+
+.dialogue-box::before {
+    content: "";
+    position: absolute;
+    top: 45%;
+    left: -16px;
+
+    width: 28px;
+    height: 28px;
+
+    background: #101b3b;
+    border-left: 2px solid #69d9ff;
+    border-bottom: 2px solid #69d9ff;
+
+    transform: rotate(45deg);
+}
+
+
+.speaker {
+    color: #69d9ff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+
+
+#dialogue-text {
+    font-size: 18px;
+    line-height: 1.6;
+    min-height: 80px;
+}
+
+
+#next-button {
+    margin-top: 18px;
+    padding: 12px 28px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: #69d9ff;
+    color: #10152f;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#next-button:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+
+    .meeting-screen {
+        height: 100svh;
+    }
+
+    #game-container {
+        height: 100%;
+    }
+
+    .top-bar {
+        padding: 18px 20px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .back-button {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+  
+    .dialogue-box {
+        top: auto;
+        bottom: 20px;
+        left: 5%;
+        right: auto;
+        transform: none;
+
+        width: 90%;
+        height: auto;
+        min-height: 190px;
+
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+   
+    .dialogue-box::before {
+        display: none;
+    }
+
+    .speaker {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    #dialogue-text {
+        font-size: 15px;
+        line-height: 1.5;
+        min-height: 60px;
+    }
+
+    #next-button {
+        margin-top: 12px;
+        padding: 11px 23px;
+        font-size: 14px;
+    }
+}
+
+
+
+@media (max-width: 380px) {
+
+    .top-bar {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 15px;
+    }
+
+    .back-button {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
+    .dialogue-box {
+        bottom: 12px;
+        left: 4%;
+        width: 92%;
+        padding: 16px;
+        min-height: 175px;
+    }
+
+    #dialogue-text {
+        font-size: 14px;
+    }
+
+    #next-button {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}

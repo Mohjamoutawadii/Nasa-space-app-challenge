@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroHeroes Journey</title>
+    <link rel="stylesheet" href="/src/css/path.css">
+</head>
+
+<body>
+
+    <header class="top-bar">
+        <a href="home.html" class="logo">🚀 ASTROHEROES</a>
+        <span>YOUR JOURNEY</span>
+    </header>
+
+    <main class="journey-container">
+
+        <h1>Your Space Adventure!</h1>
+        <p class="subtitle">Complete every mission to become an AstroHero!</p>
+
+        <div class="journey-map">
+
+            <!-- These SVG paths for the journey route created by chatgpt after explaining the desired design. The paths are designed to be responsive and visually appealing, guiding the user through the different missions in a space-themed adventure. -->
+            <svg class="journey-route desktop-route"
+                viewBox="0 0 1000 300"
+                preserveAspectRatio="none">
+
+                <path
+                    d="M80 150
+                    C180 150 180 80 290 120
+                    S400 210 500 150
+                    S620 80 710 120
+                    S820 210 920 150"
+                    fill="none"
+                    stroke="#9AA8C4"
+                    stroke-width="8"
+                    stroke-linecap="round"
+                    stroke-dasharray="5 13"
+                />
+            </svg>
+
+
+            <svg class="journey-route mobile-route"
+                viewBox="0 0 400 1100"
+                preserveAspectRatio="none">
+
+                <path
+                    d="M200 55
+                    C200 120 110 120 110 210
+                    C110 310 290 310 290 440
+                    C290 560 110 560 110 690
+                    C110 820 260 820 260 970"
+                    fill="none"
+                    stroke="#9AA8C4"
+                    stroke-width="8"
+                    stroke-linecap="round"
+                    stroke-dasharray="5 13"
+                />
+            </svg>
+
+           
+        
+            <div class="map-point start-point">
+                <span class="point-circle start-circle">
+                        <span>🚀</span>
+                    
+                </span>
+                 <span class="point-label">START</span>
+            </div>
+
+            
+            <div class="map-point mission-one locked-point" id="mission-one">
+
+                    <div class="point-circle">
+                        <span>🌕</span>
+                    </div>
+
+                    <span class="point-label">MISSION 01 🔒</span>
+                    <span class="mission-name">Find a Lunar Base</span>
+                  
+
+            </div>
+
+          
+            <div class="map-point mission-two locked-point">
+                <div class="point-circle">
+                    <span>🔭</span>
+                </div>
+                <span class="point-label">MISSION 02 🔒</span>
+                <span class="mission-name">Explore Lunar Resources</span>
+                
+            </div>
+
+            
+            <div class="map-point mission-three locked-point">
+                <div class="point-circle">
+                    <span>🏗️</span>
+                </div>
+                <span class="point-label">MISSION 03 🔒</span>
+                <span class="mission-name">Build Your Lunar Base</span>
+               
+            </div>
+
+           
+            <div class="map-point certificate-point locked-point">
+                <div class="point-circle certificate-circle">
+                    <span>🏆</span>
+                </div>
+                <span class="point-label">FINAL DESTINATION</span>
+                <span class="mission-name">AstroHero Certificate</span>
+             
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+<script src="/src/js/path.js"></script>
+</html>

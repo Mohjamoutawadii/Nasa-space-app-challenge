@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../assets/space home page.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    color: white;
+}
+
+.logo {
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffd66b;
+}
+
+.home-screen {
+  min-height: 100vh;
+  position: relative;
+  padding-right: 100px;
+  padding-left: 300px;
+}
+
+.hero {
+  position: absolute;
+  top: 48%;
+  left: 300px;
+  transform: translateY(-50%);
+
+}
+
+.eyebrow {
+  color: #ffd66b;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 1.1;
+  margin: 22px 0;
+}
+
+h1 span {
+  color: #ffd66b;
+}
+
+.description {
+  color: #c4c9e0;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 30px;
+}
+
+#start-button {
+  background: #ffd66b;
+  color: #171b45;
+  border: none;
+  border-radius: 40px;
+  padding: 17px 30px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#start-button:hover {
+  transform: translateY(-4px);
+  background: #ffe49b;
+}
+
+#start-button span {
+  margin-left: 15px;
+}
+
+
+
+footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 0;
+  font-size: 12px;
+  color: #0a0a0b;
+  letter-spacing: 1px;
+}
+
+
+@media (max-width: 768px) {
+
+    .home-screen {
+        min-height: 100svh;
+        padding: 0 25px;
+        display: flex;
+        align-items: center;
+    }
+     body {
+        background-size: cover;
+        background-position: 95% center;
+        background-attachment: scroll;
+    }
+
+    .hero {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    h1 {
+        font-size: clamp(38px, 9vw, 55px);
+        margin: 18px 0;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .description {
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 100%;
+        margin-bottom: 25px;
+    }
+
+    #start-button {
+        padding: 15px 25px;
+        font-size: 14px;
+    }
+
+    footer {
+        left: 20px;
+        bottom: 15px;
+        font-size: 9px;
+          color: #ffffff;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .home-screen {
+        padding: 0 18px;
+    }
+
+     body {
+        background-position: 60% center;
+    }
+    h1 {
+        font-size: 36px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    #start-button {
+        padding: 13px 22px;
+    }
+
+    footer {
+  
+  color: #ffffff;
+ 
+}
+
+
+}
+
+

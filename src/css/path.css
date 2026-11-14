@@ -1,0 +1,312 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #202e5b, #10152f 65%, #080d20);
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 40px;
+}
+
+.logo {
+    color: white;
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.top-bar span {
+    color: #69d9ff;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.journey-container {
+    text-align: center;
+    padding: 25px 15px 70px;
+}
+
+.journey-container h1 {
+    color: #ffd66b;
+    font-size: clamp(27px, 4vw, 40px);
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #dceaff;
+    font-size: 15px;
+}
+
+
+
+.journey-map {
+    position: relative;
+    width: min(100%, 480px);
+    height: 1100px;
+    margin: 35px auto 0;
+}
+
+.journey-route {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: visible;
+}
+
+
+.map-point {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 170px;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.point-circle {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #777f91;
+    border: 7px solid #cbd0d9;
+    box-shadow: 0 6px 0 #687184;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.point-circle span {
+    filter: grayscale(1);
+}
+
+
+
+.span,
+.start-circle span,
+.certificate-circle span {
+    filter: none;
+}
+
+.start-circle {
+    width: 64px;
+    height: 64px;
+    background: #20c8b7;
+    border-color: #b9fff4;
+    box-shadow: 0 5px 0 #139c91;
+}
+
+.certificate-circle {
+    background: #b58a35;
+    border-color: #ffe4a1;
+    box-shadow: 0 6px 0 #82601e;
+}
+
+.point-label {
+    margin-top: 12px;
+    padding: 7px 13px;
+    border-radius: 12px;
+    background: #626c80;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+.mission-name {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #dceaff;
+    max-width: 170px;
+}
+
+
+.locked-point {
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+
+.start-point {
+    top: 20px;
+    left: 50%;
+}
+
+.mission-one {
+    top: 175px;
+    left: 27.5%;
+}
+
+.mission-two {
+    top: 405px;
+    left: 72.5%;
+}
+
+.mission-three {
+    top: 655px;
+    left: 27.5%;
+}
+
+.certificate-point {
+    top: 930px;
+    left: 65%;
+}
+
+
+@media (max-width: 500px) {
+
+    .top-bar {
+        padding: 18px 15px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .top-bar span {
+        font-size: 10px;
+    }
+
+    .journey-container {
+        padding-top: 20px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .journey-map {
+        width: 100%;
+        max-width: 380px;
+        height: 1000px;
+        margin-top: 30px;
+    }
+
+    .map-point {
+        width: 145px;
+    }
+
+    .point-circle {
+        width: 65px;
+        height: 65px;
+        font-size: 25px;
+    }
+
+    .start-circle {
+        width: 55px;
+        height: 55px;
+    }
+
+    .point-label {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+
+    .mission-name {
+        font-size: 11px;
+    }
+
+    .stars {
+        font-size: 15px;
+    }
+
+    .start-point {
+        top: 10px;
+    }
+
+    .mission-one {
+        top: 155px;
+    }
+
+    .mission-two {
+        top: 365px;
+    }
+
+    .mission-three {
+        top: 585px;
+    }
+
+    .certificate-point {
+        top: 850px;
+    }
+}
+
+.desktop-route {
+    display: none;
+}
+
+.mobile-route {
+    display: block;
+}
+
+
+@media (min-width: 768px) {
+
+    .journey-container {
+        padding-top: 35px;
+    }
+
+    .journey-map {
+        width: min(1100px, 95%);
+        height: 330px;
+        margin: 70px auto 0;
+    }
+
+    .desktop-route {
+        display: block;
+    }
+
+    .mobile-route {
+        display: none;
+    }
+
+    .map-point {
+        width: 170px;
+    }
+
+    .start-point {
+        top: 105px;
+        left: 8%;
+    }
+
+    .mission-one {
+        top: 105px;
+        left: 28%;
+    }
+
+    .mission-two {
+        top: 105px;
+        left: 50%;
+    }
+
+    .mission-three {
+        top: 105px;
+        left: 72%;
+    }
+
+    .certificate-point {
+        top: 105px;
+        left: 92%;
+    }
+
+}
