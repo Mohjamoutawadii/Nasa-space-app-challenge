@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moon Outpost - Mission 1</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:Arial,sans-serif; color:#fff; background:#05071a; overflow:hidden; }
+
+  /* ---------- 3D canvas (behind everything) ---------- */
+  #canvasHolder { position:fixed; inset:0; z-index:0; display:none; }
+
+  /* ---------- Themed menu ---------- */
+  #menu { position:fixed; inset:0; z-index:1; overflow-y:auto; padding:110px 16px 40px;
+          background:radial-gradient(ellipse at bottom,#1b2352 0%,#05071a 70%); }
+  #stars { position:fixed; inset:0; pointer-events:none; }
+  .star { position:absolute; background:#fff; border-radius:50%; animation:twinkle 3s infinite ease-in-out; }
+  @keyframes twinkle { 0%,100% { opacity:.15; } 50% { opacity:1; } }
+  #menu h1 { text-align:center; margin:0 0 6px; position:relative; text-shadow:0 0 18px #6c8cff; }
+  #menu p.sub { text-align:center; color:#9aa5d1; margin:0 0 28px; position:relative; }
+  #cards { display:flex; flex-wrap:wrap; justify-content:center; gap:28px; position:relative; }
+  .card { width:260px; background:rgba(24,32,74,.85); border:2px solid var(--glow); border-radius:16px;
+          padding:16px; box-shadow:0 0 14px var(--glow); transition:transform .25s, box-shadow .25s;
+          animation:rise .8s ease-out backwards; }
+  .card:hover { transform:translateY(-10px) scale(1.03); box-shadow:0 0 34px var(--glow); }
+  @keyframes rise { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+  .icon { font-size:46px; text-align:center; }
+  .card h3 { margin:6px 0 10px; text-align:center; }
+  .card p { margin:6px 0; font-size:14px; }
+
+  /* ---------- HUD and panel ---------- */
+  #hud { position:fixed; top:0; left:0; right:0; z-index:5; display:flex; flex-wrap:wrap; gap:14px;
+         justify-content:center; padding:10px; background:rgba(5,7,26,.75); }
+  .stat { width:150px; font-size:13px; }
+  .bar { background:#2a3158; border-radius:8px; height:12px; margin-top:3px; }
+  .fill { height:100%; border-radius:8px; transition:width .5s; }
+  #panel { position:fixed; left:50%; bottom:26px; transform:translateX(-50%); z-index:6; width:min(92vw,580px);
+           max-height:62vh; overflow-y:auto; background:rgba(11,16,38,.92); border:1px solid #3a4585;
+           border-radius:14px; padding:14px; display:none; }
+  #panel h3 { margin:4px 0 8px; }
+  #source { position:fixed; left:8px; bottom:4px; z-index:7; font-size:11px; color:#9aa5d1; }
+  button { display:block; width:100%; margin:6px 0; padding:11px; font-size:15px; border:0;
+           border-radius:10px; background:#ff7a3d; color:#fff; cursor:pointer; }
+  button:hover { background:#ff9a63; }
+  small { color:#9aa5d1; }
+  .warn { color:#ffd23f; } .good { color:#6ee7a0; } .bad { color:#ff6b6b; }
+
+  /* ---------- Flare alert effect ---------- */
+  #flare { position:fixed; inset:0; z-index:4; pointer-events:none; display:none;
+           background:radial-gradient(ellipse at center,rgba(255,120,0,0) 35%,rgba(255,70,0,.6) 100%);
+           animation:pulse .8s infinite alternate; }
+  @keyframes pulse { from { opacity:.3; } to { opacity:1; } }
+</style>
+</head>
+<body>
+
+<div id="canvasHolder"></div>
+<div id="flare"></div>
+<div id="hud"></div>
+
+<div id="menu">
+  <div id="stars"></div>
+  <h1>🌙 Mission 1: Find a lunar base</h1>
+  <p class="sub">Check your stats at the top. Every site has benefits and risks. Choose wisely!</p>
+  <div id="cards"></div>
+</div>
+
+<div id="panel"></div>
+<div id="source"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// =====================================================
+// 1. CONTENT (teammates can edit the text here)
+// =====================================================
+const sites = [
+  { type: "ridge", icon: "☀️", glow: "#ffd23f", name: "Sunny ridge (south pole)",
+    pros: "Almost constant sunlight, so great solar power.",
+    cons: "Far away: the trip uses a lot of oxygen. No natural cover from radiation.",
+    travel: { power: -10, oxygen: -25 }, shieldBonus: 0,
+    why: "Some ridges near the Moon's south pole get sunlight almost all the time, which is great for solar panels.",
+    look: { ground: 0xb8b2a5, sun: 0xfff1c0, sunPower: 1.5, ambient: 0.4, rocks: 15 } },
+  { type: "crater", icon: "🕳️", glow: "#4aa8ff", name: "Shadowed crater (water ice)",
+    pros: "May hold water ice. The crater walls block some radiation.",
+    cons: "No sunlight for solar panels. The cold makes the trip use a lot of power.",
+    travel: { power: -25, oxygen: -10 }, shieldBonus: 15,
+    why: "Dark craters can hold ice, and their walls give natural shielding, but solar power does not work there.",
+    look: { ground: 0x5a5f6b, sun: 0x8fb4ff, sunPower: 0.3, ambient: 0.3, rocks: 12 } },
+  { type: "plain", icon: "🏜️", glow: "#ff9a63", name: "Flat plain (easy landing)",
+    pros: "Close and easy to reach, so the trip is cheap.",
+    cons: "Nothing protects you from radiation and there is no ice nearby.",
+    travel: { power: -10, oxygen: -10 }, shieldBonus: 0,
+    why: "Flat land is easy to reach, but nothing shields the crew from a solar flare.",
+    look: { ground: 0x8a8a8a, sun: 0xffffff, sunPower: 1.0, ambient: 0.3, rocks: 40 } }
+];
+
+const actions = [
+  { label: "🛡️ Reinforce the shield", cost: "-20 power, +25 shield",
+    effect: { power: -20, shield: 25 },
+    why: "Shielding blocks radiation, but it uses power you could have saved." },
+  { label: "🚪 Shelter in the lander", cost: "-15 oxygen, +10 shield",
+    effect: { oxygen: -15, shield: 10 },
+    why: "Hiding inside helps a little, but the crew keeps breathing while they wait." },
+  { label: "🔬 Keep exploring", cost: "-5 power, +20 XP, no extra shield",
+    effect: { power: -5, xp: 20 },
+    why: "Science is the goal of the mission, but the crew stays exposed." }
+];
+
+const questions = [
+  { q: "Why is the Moon more dangerous than Earth during a solar flare?",
+    answers: ["It is closer to the Sun",
+              "No thick air or strong magnetic field blocks radiation",
+              "Flares only happen near the Moon"], correct: 1 },
+  { q: "What is a solar flare?",
+    answers: ["A burst of energy from the Sun", "A kind of Moon rock", "A rocket engine test"], correct: 0 },
+  { q: "Which flare class is the strongest?",
+    answers: ["B", "C", "X"], correct: 2 }
+];
+
+// =====================================================
+// 2. NASA DATA (live -> snapshot file -> built-in)
+// =====================================================
+let flares = [{ classType: "M5.0" }, { classType: "C2.1" }, { classType: "X1.2" }, { classType: "B9.0" }];
+let dataSource = "Built-in sample data (not live)";
+
+async function loadFlares() {
+  try {
+    const end = new Date().toISOString().slice(0, 10);
+    const start = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
+    const url = "https://api.nasa.gov/DONKI/FLR?startDate=" + start + "&endDate=" + end + "&api_key=DEMO_KEY";
+    const data = await (await fetch(url)).json();
+    if (Array.isArray(data) && data.length > 0) {
+      flares = data.filter(f => f.classType);
+      dataSource = "LIVE NASA DONKI solar flares (last 30 days)";
+      return;
+    }
+    throw new Error("no live data");
+  } catch (e) {
+    try {
+      const snap = await (await fetch("donki_snapshot.json")).json();
+      flares = snap.flares;
+      dataSource = "ARCHIVED NASA DONKI data, downloaded " + snap.fetchedOn;
+    } catch (e2) { /* keep the built-in list */ }
+  }
+}
+
+// =====================================================
+// 3. 3D SCENE
+// =====================================================
+const R = 14;                       // radius of the astronaut's walking path
+let renderer, scene, camera, astro, earth, activeSite, activeScene = false;
+let walkAngle = 0, t = 0, speedUp = false;
+
+function bump(x, z) {
+  return Math.sin(x * 0.35) * Math.cos(z * 0.3) * 0.35 + Math.sin(x * 0.11 + z * 0.13) * 0.8;
+}
+
+// Ground height at any point. Used for the terrain AND to keep the astronaut on the ground.
+function heightAt(type, x, z) {
+  const b = bump(x, z);
+  const r = Math.sqrt(x * x + z * z);
+  if (type === "ridge") return b * 1.2 + 3.5 * Math.sin(x * 0.05 + 0.5) * Math.cos(z * 0.045);
+  if (type === "crater") {
+    const bowl = r < 45 ? -8 * (1 - (r / 45) ** 2) : 0;
+    const rim = 5 * Math.exp(-((r - 48) ** 2) / 40);
+    return b * 0.6 + bowl + rim;
+  }
+  return b * 0.35;                  // plain
+}
+
+function makeAstronaut() {
+  const white = new THREE.MeshStandardMaterial({ color: 0xf2f2f2 });
+  const gold = new THREE.MeshStandardMaterial({ color: 0xffb703, metalness: 0.6, roughness: 0.3 });
+  const grey = new THREE.MeshStandardMaterial({ color: 0xcccccc });
+
+  function limb(w, h, x, y) {
+    const pivot = new THREE.Group();
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, w), white);
+    m.position.y = -h / 2;
+    pivot.add(m);
+    pivot.position.set(x, y, 0);
+    return pivot;
+  }
+
+  const group = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.BoxGeometry(1, 1.3, 0.6), white); body.position.y = 1.8;
+  const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.45, 24, 24), white); helmet.position.y = 2.8;
+  const visor = new THREE.Mesh(new THREE.SphereGeometry(0.33, 24, 24), gold); visor.position.set(0, 2.82, 0.2);
+  const pack = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1, 0.4), grey); pack.position.set(0, 1.9, -0.5);
+  const leftLeg = limb(0.4, 1.2, -0.28, 1.2), rightLeg = limb(0.4, 1.2, 0.28, 1.2);
+  const leftArm = limb(0.3, 1.0, -0.7, 2.4), rightArm = limb(0.3, 1.0, 0.7, 2.4);
+  group.add(body, helmet, visor, pack, leftLeg, rightLeg, leftArm, rightArm);
+  return { group, leftLeg, rightLeg, leftArm, rightArm };
+}
+
+function buildScene(site) {
+  activeSite = site;
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x000000);
+  camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 600);
+
+  // lights depend on the site
+  scene.add(new THREE.AmbientLight(0xffffff, site.look.ambient));
+  const sun = new THREE.DirectionalLight(site.look.sun, site.look.sunPower);
+  sun.position.set(site.type === "ridge" ? 60 : 40, site.type === "ridge" ? 18 : 30, 20);
+  scene.add(sun);
+
+  // ground
+  const geo = new THREE.PlaneGeometry(260, 260, 90, 90);
+  geo.rotateX(-Math.PI / 2);
+  const pos = geo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    pos.setY(i, heightAt(site.type, pos.getX(i), pos.getZ(i)));
+  }
+  geo.computeVertexNormals();
+  scene.add(new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: site.look.ground, flatShading: true })));
+
+  // stars
+  const sp = [];
+  for (let i = 0; i < 900; i++) sp.push((Math.random() - 0.5) * 500, Math.random() * 200 + 15, (Math.random() - 0.5) * 500);
+  const sg = new THREE.BufferGeometry();
+  sg.setAttribute("position", new THREE.Float32BufferAttribute(sp, 3));
+  scene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 })));
+
+  // Earth in the sky
+  earth = new THREE.Mesh(new THREE.SphereGeometry(8, 32, 32), new THREE.MeshStandardMaterial({ color: 0x3b82f6 }));
+  earth.position.set(-90, 70, -160);
+  scene.add(earth);
+
+  // rocks (kept away from the walking path)
+  const rockMat = new THREE.MeshStandardMaterial({ color: 0x777777, flatShading: true });
+  for (let i = 0; i < site.look.rocks; i++) {
+    const x = (Math.random() - 0.5) * 120, z = (Math.random() - 0.5) * 120;
+    const r = Math.sqrt(x * x + z * z);
+    if (Math.abs(r - R) < 3) continue;
+    const rock = new THREE.Mesh(new THREE.IcosahedronGeometry(0.4 + Math.random() * 0.9, 0), rockMat);
+    rock.scale.y = 0.6;
+    rock.position.set(x, heightAt(site.type, x, z) + 0.2, z);
+    scene.add(rock);
+  }
+
+  // glowing ice crystals in the crater
+  if (site.type === "crater") {
+    const iceMat = new THREE.MeshStandardMaterial({ color: 0x9fd8ff, emissive: 0x2a6fa8, emissiveIntensity: 0.9 });
+    for (let i = 0; i < 9; i++) {
+      const a = Math.random() * Math.PI * 2, d = 5 + Math.random() * 22;
+      if (Math.abs(d - R) < 2.5) continue;
+      const x = Math.cos(a) * d, z = Math.sin(a) * d;
+      const ice = new THREE.Mesh(new THREE.IcosahedronGeometry(0.6, 0), iceMat);
+      ice.scale.y = 1.7;
+      ice.position.set(x, heightAt("crater", x, z) + 0.5, z);
+      scene.add(ice);
+    }
+  }
+
+  astro = makeAstronaut();
+  scene.add(astro.group);
+  walkAngle = 0;
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  if (!activeScene) return;
+
+  t += speedUp ? 0.13 : 0.07;
+  walkAngle += speedUp ? 0.009 : 0.0045;
+
+  // the astronaut paces in a circle around the area
+  const x = Math.cos(walkAngle) * R, z = Math.sin(walkAngle) * R;
+  const dx = -Math.sin(walkAngle), dz = Math.cos(walkAngle);   // walking direction
+  const ground = heightAt(activeSite.type, x, z);
+
+  astro.group.position.set(x, ground + Math.abs(Math.sin(t)) * 0.3, z);
+  astro.group.rotation.y = Math.atan2(dx, dz);
+
+  astro.leftLeg.rotation.x = Math.sin(t * 2) * 0.6;
+  astro.rightLeg.rotation.x = -Math.sin(t * 2) * 0.6;
+  astro.leftArm.rotation.x = -Math.sin(t * 2) * 0.5;
+  astro.rightArm.rotation.x = Math.sin(t * 2) * 0.5;
+
+  // camera follows from behind
+  camera.position.set(x - dx * 9, ground + 4.5, z - dz * 9);
+  camera.lookAt(x, ground + 2, z);
+
+  earth.rotation.y += 0.003;
+  renderer.render(scene, camera);
+}
+
+window.addEventListener("resize", () => {
+  if (!renderer) return;
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  if (camera) { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); }
+});
+
+// =====================================================
+// 4. GAME LOGIC
+// =====================================================
+let state, site, flare, question, flareTimer;
+
+function rand(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
+
+function needed(classType) {
+  const letter = classType[0];
+  if (letter === "X") return 70;
+  if (letter === "M") return 50;
+  if (letter === "C") return 30;
+  return 15;
+}
+
+function apply(effect) {
+  for (let key in effect) state[key] = Math.max(0, Math.min(100, state[key] + effect[key]));
+}
+
+function stat(label, value, color) {
+  return "<div class='stat'>" + label + " " + value +
+         "<div class='bar'><div class='fill' style='width:" + value + "%;background:" + color + "'></div></div></div>";
+}
+
+function updateHud() {
+  document.getElementById("hud").innerHTML =
+    stat("⚡ Power", state.power, "#ffd23f") +
+    stat("💨 Oxygen", state.oxygen, "#4ecdc4") +
+    stat("🛡️ Shield", state.shield, "#a78bfa") +
+    "<div class='stat'>⭐ XP " + state.xp + "</div>";
+  document.getElementById("source").innerText = "Data: " + dataSource;
+}
+
+function showPanel(html) {
+  const p = document.getElementById("panel");
+  p.innerHTML = html;
+  p.style.display = "block";
+}
+
+function hidePanel() { document.getElementById("panel").style.display = "none"; }
+
+function flareEffect(on) { document.getElementById("flare").style.display = on ? "block" : "none"; }
+
+function fail(message) {
+  activeScene = false;
+  flareEffect(false);
+  showPanel("<h3 class='bad'>💔 Mission failed</h3><p>" + message + "</p>" +
+            "<button onclick='startMission()'>Try again</button>");
+}
+
+// ----- Phase 1: the themed menu -----
+function startMission() {
+  clearTimeout(flareTimer);
+  activeScene = false;
+  speedUp = false;
+  flareEffect(false);
+  hidePanel();
+  document.getElementById("canvasHolder").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+
+  state = { power: rand(30, 70), oxygen: rand(30, 70), shield: rand(15, 40), xp: 0 };
+  updateHud();
+
+  let html = "";
+  sites.forEach((s, i) => {
+    let hint = "";
+    if (state.power + s.travel.power <= 10) hint += "<p class='warn'>⚠️ Your power is low for this trip!</p>";
+    if (state.oxygen + s.travel.oxygen <= 10) hint += "<p class='warn'>⚠️ Your oxygen is low for this trip!</p>";
+    html += "<div class='card' style='--glow:" + s.glow + ";animation-delay:" + (i * 0.2) + "s'>" +
+            "<div class='icon'>" + s.icon + "</div><h3>" + s.name + "</h3>" +
+            "<p>✅ " + s.pros + "</p><p>❌ " + s.cons + "</p>" +
+            "<p><small>Trip cost: " + (-s.travel.power) + " power, " + (-s.travel.oxygen) + " oxygen</small></p>" +
+            hint + "<button onclick='chooseSite(" + i + ")'>Go here</button></div>";
+  });
+  document.getElementById("cards").innerHTML = html;
+}
+
+// ----- Phase 2: travel, then walk on the Moon -----
+function chooseSite(i) {
+  site = sites[i];
+  apply(site.travel);
+  updateHud();
+  if (state.power <= 0) return fail("You ran out of power on the way to the " + site.name + ".");
+  if (state.oxygen <= 0) return fail("You ran out of oxygen on the way to the " + site.name + ".");
+
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("canvasHolder").style.display = "block";
+  buildScene(site);
+  activeScene = true;
+
+  showPanel("<h3>" + site.icon + " Exploring the " + site.name + "</h3>" +
+            "<p>You walk across the Moon's surface. Stay alert, something is coming from the Sun...</p>");
+  flareTimer = setTimeout(flareAlert, 7000);
+}
+
+// ----- Phase 3: the real NASA flare alert -----
+function flareAlert() {
+  flare = flares[rand(0, flares.length - 1)];
+  const need = needed(flare.classType);
+  speedUp = true;                    // the astronaut hurries
+  flareEffect(true);
+
+  let html = "<h3 class='warn'>⚠️ Flare alert!</h3>" +
+             "<p>NASA data shows a real <b>class " + flare.classType + "</b> solar flare.</p>" +
+             "<p><small>A solar flare is a burst of energy from the Sun. X is strongest, then M, C, B. " +
+             "You need a shield of " + need + " or more (this site's natural cover adds " + site.shieldBonus + ").</small></p>" +
+             "<p>What do you do?</p>";
+  actions.forEach((a, n) => {
+    html += "<button onclick='doAction(" + n + ")'>" + a.label + "<br><small>" + a.cost + "</small></button>";
+  });
+  showPanel(html);
+}
+
+function doAction(n) {
+  apply(actions[n].effect);
+  updateHud();
+  if (state.power <= 0) return fail("You ran out of power during the flare.");
+  if (state.oxygen <= 0) return fail("You ran out of oxygen during the flare.");
+  askQuestion(actions[n].why);
+}
+
+// ----- Phase 4: safety question -----
+function askQuestion(whyText) {
+  question = questions[rand(0, questions.length - 1)];
+  let html = "<p><b>Why?</b> " + whyText + "</p><h3>Safety question</h3><p>" + question.q + "</p>";
+  question.answers.forEach((a, i) => { html += "<button onclick='answer(" + i + ")'>" + a + "</button>"; });
+  showPanel(html);
+}
+
+function answer(i) {
+  let note;
+  if (i === question.correct) {
+    state.shield = Math.min(100, state.shield + 10);
+    state.xp += 10;
+    note = "<span class='good'>✅ Correct! You stayed alert: +10 shield, +10 XP.</span>";
+  } else {
+    note = "<span class='bad'>Not quite.</span> The right answer: " + question.answers[question.correct];
+  }
+  updateHud();
+  resolve(note);
+}
+
+// ----- Phase 5: did the shield hold? -----
+function resolve(note) {
+  const need = needed(flare.classType);
+  const total = state.shield + site.shieldBonus;
+  const passed = total >= need;
+  speedUp = false;
+  flareEffect(false);
+
+  showPanel("<h3 class='" + (passed ? "good" : "bad") + "'>" + (passed ? "🎉 Mission passed!" : "💔 Mission failed") + "</h3>" +
+            "<p>" + note + "</p>" +
+            "<p>Shield " + state.shield + " + " + site.shieldBonus + " from the site = <b>" + total +
+            "</b> (needed " + need + " for the class " + flare.classType + " flare)</p>" +
+            "<p>" + (passed ? "Your base survived the flare." : "The shield was too weak for this flare. Try a different plan!") + "</p>" +
+            "<p><small>" + site.why + "</small></p>" +
+            "<button onclick='startMission()'>Play again</button>");
+}
+
+// =====================================================
+// 5. START
+// =====================================================
+renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById("canvasHolder").appendChild(renderer.domElement);
+
+for (let i = 0; i < 90; i++) {                      // twinkling menu stars
+  const s = document.createElement("div");
+  s.className = "star";
+  const size = Math.random() * 2 + 1;
+  s.style.cssText = "width:" + size + "px;height:" + size + "px;left:" + Math.random() * 100 + "%;top:" +
+                    Math.random() * 100 + "%;animation-delay:" + Math.random() * 3 + "s";
+  document.getElementById("stars").appendChild(s);
+}
+
+animate();
+loadFlares().then(startMission);
+</script>
+</body>
+</html>
