@@ -1,3 +1,8 @@
+//This code was completely created by ChatGPT, an AI language model developed by OpenAI. 
+// It is intended to provide assistance and guidance in coding tasks. 
+// We explained the scene we want to create, which is a 3D scene with a character named Cosmo, who interacts with the user through dialogues. 
+// And chatgpt gave us the code that uses Three.js to create the 3D environment and load the character model.
+
 
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
