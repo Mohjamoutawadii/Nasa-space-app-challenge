@@ -1,71 +1,119 @@
 # 🚀 ASTROHEROES: JUNIOR MOON EXPLORER 🌕
+
 ### Don't just learn about space. Become part of the mission!
 
+**Welcome, Future Astronaut!** 👩‍🚀
 
-**Welcome, Future Astronaut!**
-
-Have you ever dreamed of walking on the Moon, exploring the unknown, and discovering what it takes to become a real astronaut?
+Have you ever dreamed of walking on the Moon, exploring the unknown, and discovering what it takes to become an astronaut?
 
 With **AstroHeroes**, your space adventure begins right here!
 
-AstroHeroes is an interactive, space-themed educational experience designed to introduce young explorers to the wonders of lunar exploration through engaging mini-missions, immersive visuals, and interactive activities.
+AstroHeroes is an interactive educational web experience designed to introduce children to lunar exploration through immersive 3D environments, guided missions, and decision-based challenges.
 
-Instead of simply reading about space, players become astronauts and learn by exploring, experimenting, and completing challenges.
+Players don't just read about space — they become astronauts, explore the lunar surface, make important decisions, and discover how astronauts face challenges while living and working on the Moon.
 
-**Your mission? Explore. Learn. Discover. Become an AstroHero!** 👩‍🚀
-
----
-
-## 🎮 What awaits you?
-
-🌙 **Explore the Moon**
-Discover the lunar environment and begin your journey into space.
-
-🧑‍🚀 **Meet Your Astronaut**
-Enter an immersive space experience featuring a 3D astronaut called Cosmo.
-
-🛰️ **Complete Mini-Missions**
-Take on interactive challenges designed to make space exploration fun and educational.
-
-🌟 **Learn Through Discovery**
-Explore space-related concepts through an engaging, adventure-based experience.
-
-📱 **Explore Anywhere**
-Enjoy a responsive experience designed for desktop and mobile screens.
+**Your mission? Explore. Learn. Decide. Discover. Become an AstroHero!** 🌟
 
 ---
 
-## 🪐 The Experience
+## 🎮 What Is AstroHeroes?
 
-Your journey starts at the AstroHeroes home page, where you enter the world of space exploration.
+AstroHeroes transforms lunar exploration into an adventure where curiosity is the key to success.
 
-From there, you can navigate through different sections and discover your next mission.
+The experience combines storytelling, interactive gameplay, and 3D visualization to help young explorers discover the challenges of establishing and maintaining a lunar base.
+
+### 🌙 Mission 01 — Choose Your Lunar Base
+
+Every great mission starts with an important decision: **Where should we build our lunar base?**
+
+Join Cosmo, your astronaut companion, and explore three different lunar environments:
+
+- ☀️ **Sunny Ridge** — A location offering better sunlight conditions.
+- 🌑 **Shadowed Crater** — A permanently shadowed environment where water ice may be of scientific interest.
+- 🏜️ **Rocky Plain** — A lunar landscape with its own environmental characteristics.
+
+Explore the locations, discover their features, and choose the most suitable place for your future lunar base.
+
+Your decision will influence the starting conditions of the next mission!
+
+### 🛰️ Mission 02 — Survive the Unexpected
+
+Welcome to your lunar base! Your exploration has just begun, but space missions don't always go according to plan.
+
+During the mission, Cosmo encounters unexpected situations that require your help.
+
+**Can you make the right decisions to keep the mission running?**
+
+Face three simulated emergencies:
+
+- ☀️ **Solar Radiation Alert** — Decide whether Cosmo should return to the shelter or continue collecting samples.
+- ⚡ **Solar Panel Failure** — Repair the damaged panels or switch to emergency batteries.
+- 🫧 **Oxygen Pressure Leak** — Isolate the damaged compartment or attempt an emergency repair.
+
+Every decision has consequences!
+
+Manage four essential resources throughout the mission:
+
+| Resource | What it represents |
+|---|---|
+| ⚡ Energy | Power available to the lunar base |
+| 🫧 Oxygen | Available oxygen supply |
+| ❤️ Health | Cosmo's health condition |
+| 🛡️ Safety | Overall base safety |
+
+Your choices affect these resources and determine the final mission outcome.
+
+*Note: Mission 02 uses simulated emergency scenarios and game-based resource values for educational purposes. They are not real-time lunar hazard measurements.*
+
+### 🏅 Your AstroHero Certificate
+
+Complete your missions and earn your own AstroHero certificate!
+
+Celebrate your achievements with a personalized certificate that you can download and keep as a memory of your lunar adventure.
+
+---
+
+## 🧭 Your Journey
 
 | Destination | Your experience |
 |---|---|
-| 🚀 Home | Welcome to your space adventure |
-| 🌕 Missions | Discover and complete mini-missions |
-| 🧭 Journey | Explore your astronaut journey |
+| 🚀 Home | Enter the AstroHeroes universe |
+| 👋 Meet Cosmo | Meet your astronaut companion |
+| 🌙 Mission 01 | Explore the Moon and select your base |
+| 🛰️ Mission 02 | Face emergencies and make critical decisions |
+| 🏅 Certificate | Celebrate your achievements |
+
+---
+
+## ✨ What Makes AstroHeroes Special?
+
+- **Learn by doing:** Discover lunar exploration through interactive experiences rather than passive reading.
+- **Decision-based gameplay:** Understand that every decision can have consequences.
+- **Immersive 3D environments:** Explore a lunar landscape with a 3D astronaut, habitats, solar panels, and celestial objects.
+- **Progressive missions:** Your first mission influences the conditions of your second mission.
+- **A sense of achievement:** Complete the challenges and earn a personalized certificate.
+- **Kid-friendly experience:** A playful space adventure designed to make scientific concepts more accessible to young explorers.
 
 ---
 
 ## 🛠️ Built With
 
-Our mission was brought to life using web technologies and 3D visualization.
+Our mission was brought to life using modern web technologies and 3D visualization.
 
 | Technology | Purpose |
 |---|---|
-| HTML5 | Structure and content |
-| CSS3 | Design, animations and responsive layouts |
-| JavaScript | Interactivity and game logic |
-| Three.js | 3D scenes and astronaut visualization |
-| GLTF / GLB | Loading 3D models |
+| HTML5 | Page structure and content |
+| CSS3 | Visual design, animations, and responsive layouts |
+| JavaScript | Interactivity, game logic, and mission progression |
+| Three.js | 3D lunar environments and scene rendering |
+| GLTF / GLB | Loading and displaying 3D models |
+| Local Storage | Saving mission progress and player choices |
 
 ---
 
 ## 🚀 Launch Your Own Mission
 
-Want to explore the project locally?
+Want to explore AstroHeroes on your computer?
 
 ### 1. Clone the repository
 
@@ -85,8 +133,7 @@ cd Nasa-space-app-challenge
 npm install
 ```
 
-### 4. Start the project
-
+### 4. Start the development server
 
 ```bash
 npm run dev
@@ -94,7 +141,7 @@ npm run dev
 
 ### 5. Start exploring!
 
-Open the local address provided by your development server and begin your adventure!
+Open the local URL provided by Vite in your browser and begin your adventure!
 
 ---
 
@@ -107,11 +154,12 @@ During development, **ChatGPT (OpenAI)** was used as an AI-assisted development 
 It helped our team with:
 
 - Understanding technical concepts and exploring possible implementations.
-- Assisting with HTML, CSS and JavaScript development.
+- Assisting with HTML, CSS, and JavaScript development.
 - Debugging and improving code.
-- Exploring responsive design and 3D integration.
+- Exploring ans implementing responsive design and 3D integration.
+- Brainstorming gameplay mechanics and interactive experiences.
 
-**Important:** AI was used as an assistant throughout the development process. Project decisions, implementation, testing, integration, and final validation remained the responsibility of our team.
+**Important:** AI was used as an assistant throughout development. Project decisions, integration, and final validation remained the responsibility of our team.
 
 ---
 
@@ -123,26 +171,25 @@ We believe in giving credit where credit is due.
 
 Some visual assets and 3D resources used in the project originate from external creators.
 
-Special credit:
+**Special credit:**
 
 - **3D Astronaut Model:** [Astronaut Figure Crafted by Jerovdl – Sketchfab](https://sketchfab.com/3d-models/astronaut-figure-crafted-by-jerovdl-36e3390138f049589a99aa4b1fff44b2).
 
 Other images, textures, fonts, and resources should be credited to their respective creators and sources.
 
+Please refer to the original asset pages and included license information for their specific usage conditions.
 
-### NASA Data & APIs
-AstroHeroes is built using open-source technologies and publicly available scientific resources.
+### NASA Educational Resources
 
-- **NASA DONKI (Space Weather Database):** [Solar flare and coronal mass ejection data] (https://api.nasa.gov/).
+AstroHeroes is an independent educational project inspired by lunar exploration and space science.
 
-- **NASA Goddard Space Flight Center:** [Scientific Visualization Studio (SVS) – Lunar South Pole videos and scientific visualizations] (https://svs.gsfc.nasa.gov/gallery/moonpole/).
+- **NASA Goddard Space Flight Center:** [Scientific Visualization Studio — Lunar South Pole](https://svs.gsfc.nasa.gov/gallery/moonpole/).
 
-These materials are subject to NASA's media usage guidelines and any specific credits or restrictions indicated on their individual source pages. NASA materials are used for educational purposes. All rights remain subject to their respective usage guidelines.
-
+NASA materials are subject to their respective media usage guidelines and attribution requirements.
 
 ### NASA Disclaimer
 
-AstroHeroes is an independent educational project developed for the NASA Space Apps Challenge.
+AstroHeroes is an independent educational project developed for the **NASA Space Apps Challenge**.
 
 It is not an official NASA product and is not affiliated with, endorsed by, or sponsored by NASA.
 
@@ -156,7 +203,7 @@ Behind every successful space mission is a great team!
 
 **AstroHeroes was developed by a team of passionate young innovators** participating in the NASA Space Apps Challenge.
 
-Together, we combined creativity, technology, and curiosity to turn a space exploration idea into an interactive experience.
+Together, we combined creativity, technology, research, and software development to turn a space exploration idea into an interactive experience.
 
 ---
 
@@ -168,7 +215,7 @@ Every astronaut starts with curiosity. Every great mission starts with an idea.
 
 So, future astronaut...
 
-**3... 2... 1... IGNITION! 🚀**
+# 3... 2... 1... IGNITION! 🚀
 
 *Your adventure is waiting beyond the stars.*
 
