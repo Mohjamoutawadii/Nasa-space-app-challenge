@@ -1,8 +1,8 @@
-# 🚀 ASTROHEROES: JUNIOR MOON EXPLORER 🌕
+# ASTROHEROES: JUNIOR MOON EXPLORER 
 
 ### Don't just learn about space. Become part of the mission!
 
-**Welcome, Future Astronaut!** 👩‍🚀
+**Welcome, Future Astronaut!** 
 
 Have you ever dreamed of walking on the Moon, exploring the unknown, and discovering what it takes to become an astronaut?
 
@@ -12,31 +12,31 @@ AstroHeroes is an interactive educational web experience designed to introduce c
 
 Players don't just read about space — they become astronauts, explore the lunar surface, make important decisions, and discover how astronauts face challenges while living and working on the Moon.
 
-**Your mission? Explore. Learn. Decide. Discover. Become an AstroHero!** 🌟
+**Your mission? Explore. Learn. Decide. Discover. Become an AstroHero!** 
 
 ---
 
-## 🎮 What Is AstroHeroes?
+## What Is AstroHeroes?
 
 AstroHeroes transforms lunar exploration into an adventure where curiosity is the key to success.
 
 The experience combines storytelling, interactive gameplay, and 3D visualization to help young explorers discover the challenges of establishing and maintaining a lunar base.
 
-### 🌙 Mission 01 — Choose Your Lunar Base
+### Mission 01 — Choose Your Lunar Base
 
 Every great mission starts with an important decision: **Where should we build our lunar base?**
 
 Join Cosmo, your astronaut companion, and explore three different lunar environments:
 
-- ☀️ **Sunny Ridge** — A location offering better sunlight conditions.
-- 🌑 **Shadowed Crater** — A permanently shadowed environment where water ice may be of scientific interest.
-- 🏜️ **Rocky Plain** — A lunar landscape with its own environmental characteristics.
+- **Sunny Ridge** — A location offering better sunlight conditions.
+- **Shadowed Crater** — A permanently shadowed environment where water ice may be of scientific interest.
+- **Rocky Plain** — A lunar landscape with its own environmental characteristics.
 
 Explore the locations, discover their features, and choose the most suitable place for your future lunar base.
 
 Your decision will influence the starting conditions of the next mission!
 
-### 🛰️ Mission 02 — Survive the Unexpected
+### Mission 02 — Survive the Unexpected
 
 Welcome to your lunar base! Your exploration has just begun, but space missions don't always go according to plan.
 
@@ -46,9 +46,9 @@ During the mission, Cosmo encounters unexpected situations that require your hel
 
 Face three simulated emergencies:
 
-- ☀️ **Solar Radiation Alert** — Decide whether Cosmo should return to the shelter or continue collecting samples.
-- ⚡ **Solar Panel Failure** — Repair the damaged panels or switch to emergency batteries.
-- 🫧 **Oxygen Pressure Leak** — Isolate the damaged compartment or attempt an emergency repair.
+- **Solar Radiation Alert** — Decide whether Cosmo should return to the shelter or continue collecting samples.
+- **Solar Panel Failure** — Repair the damaged panels or switch to emergency batteries.
+- **Oxygen Pressure Leak** — Isolate the damaged compartment or attempt an emergency repair.
 
 Every decision has consequences!
 
@@ -56,16 +56,16 @@ Manage four essential resources throughout the mission:
 
 | Resource | What it represents |
 |---|---|
-| ⚡ Energy | Power available to the lunar base |
-| 🫧 Oxygen | Available oxygen supply |
-| ❤️ Health | Cosmo's health condition |
-| 🛡️ Safety | Overall base safety |
+| Energy | Power available to the lunar base |
+| Oxygen | Available oxygen supply |
+| Health | Cosmo's health condition |
+| Safety | Overall base safety |
 
 Your choices affect these resources and determine the final mission outcome.
 
 *Note: Mission 02 uses simulated emergency scenarios and game-based resource values for educational purposes. They are not real-time lunar hazard measurements.*
 
-### 🏅 Your AstroHero Certificate
+### Your AstroHero Certificate
 
 Complete your missions and earn your own AstroHero certificate!
 
@@ -73,19 +73,19 @@ Celebrate your achievements with a personalized certificate that you can downloa
 
 ---
 
-## 🧭 Your Journey
+## Your Journey
 
 | Destination | Your experience |
 |---|---|
-| 🚀 Home | Enter the AstroHeroes universe |
-| 👋 Meet Cosmo | Meet your astronaut companion |
-| 🌙 Mission 01 | Explore the Moon and select your base |
-| 🛰️ Mission 02 | Face emergencies and make critical decisions |
-| 🏅 Certificate | Celebrate your achievements |
+| Home | Enter the AstroHeroes universe |
+| Meet Cosmo | Meet your astronaut companion |
+| Mission 01 | Explore the Moon and select your base |
+| Mission 02 | Face emergencies and make critical decisions |
+| Certificate | Celebrate your achievements |
 
 ---
 
-## ✨ What Makes AstroHeroes Special?
+## What Makes AstroHeroes Special?
 
 - **Learn by doing:** Discover lunar exploration through interactive experiences rather than passive reading.
 - **Decision-based gameplay:** Understand that every decision can have consequences.
@@ -96,7 +96,7 @@ Celebrate your achievements with a personalized certificate that you can downloa
 
 ---
 
-## 🛠️ Built With
+## Built With
 
 Our mission was brought to life using modern web technologies and 3D visualization.
 
@@ -111,7 +111,7 @@ Our mission was brought to life using modern web technologies and 3D visualizati
 
 ---
 
-## 🚀 Launch Your Own Mission
+## Launch Your Own Mission
 
 Want to explore AstroHeroes on your computer?
 
@@ -145,7 +145,7 @@ Open the local URL provided by Vite in your browser and begin your adventure!
 
 ---
 
-## 🤖 A Little Help From AI
+## A Little Help From AI
 
 We believe in innovation, collaboration, and transparency.
 
@@ -159,25 +159,22 @@ It helped our team with:
 - Exploring ans implementing responsive design and 3D integration.
 - Brainstorming gameplay mechanics and interactive experiences.
 
-**Important:** AI was used as an assistant throughout development. Project decisions, integration, and final validation remained the responsibility of our team.
+**Important:** AI was used as an assistant throughout development. Project decisions and final validation remained the responsibility of our team.
 
 ---
 
-## 📜 Licenses & Credits
+## Licenses & Credits
 
 We believe in giving credit where credit is due.
 
 ### Third-Party Assets
 
-Some visual assets and 3D resources used in the project originate from external creators.
+3D resources used in the project originate from external creators.
 
 **Special credit:**
 
 - **3D Astronaut Model:** [Astronaut Figure Crafted by Jerovdl – Sketchfab](https://sketchfab.com/3d-models/astronaut-figure-crafted-by-jerovdl-36e3390138f049589a99aa4b1fff44b2).
 
-Other images, textures, fonts, and resources should be credited to their respective creators and sources.
-
-Please refer to the original asset pages and included license information for their specific usage conditions.
 
 ### NASA Educational Resources
 
@@ -195,31 +192,6 @@ It is not an official NASA product and is not affiliated with, endorsed by, or s
 
 NASA names, materials, and resources remain subject to their respective usage and attribution policies.
 
----
-
-## 👩‍🚀 Meet the Crew
-
-Behind every successful space mission is a great team!
-
-**AstroHeroes was developed by a team of passionate young innovators** participating in the NASA Space Apps Challenge.
-
-Together, we combined creativity, technology, research, and software development to turn a space exploration idea into an interactive experience.
-
----
-
-## 🌠 Our Final Message
-
-The universe is full of mysteries waiting to be discovered.
-
-Every astronaut starts with curiosity. Every great mission starts with an idea.
-
-So, future astronaut...
-
-# 3... 2... 1... IGNITION! 🚀
-
-*Your adventure is waiting beyond the stars.*
-
----
 
 <p align="center">
   Made with 💙, curiosity, and a little bit of stardust.
