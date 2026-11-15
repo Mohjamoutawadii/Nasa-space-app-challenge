@@ -9,7 +9,6 @@ const sites = [
   {
     type: 'ridge',
     name: 'Sunny Ridge',
-    icon: '☀️',
     description: 'A ridge that receives a lot of sunlight.',
     look: {
       ground: 0xb8b2a5,
@@ -21,17 +20,17 @@ const sites = [
     points: [
       {
         position: [12, 0, 8],
-        title: '☀️ Sunlight',
+        title: 'Sunlight',
         text: 'This ridge receives a lot of sunlight. Solar panels could produce energy here!'
       },
       {
         position: [20, 0, -8],
-        title: '⛰️ Terrain',
+        title: 'Terrain',
         text: 'Look at the slopes. A very steep surface can make landing and building difficult.'
       },
       {
         position: [5, 0, -18],
-        title: '🧊 Water ice',
+        title: 'Water ice',
         text: 'We need to investigate whether water ice exists nearby. We cannot assume it is present here.'
       }
     ]
@@ -39,7 +38,6 @@ const sites = [
   {
     type: 'crater',
     name: 'Shadowed Crater',
-    icon: '🌑',
     description: 'A permanently shadowed region that could preserve water ice.',
     look: {
       ground: 0x5a5f6b,
@@ -51,17 +49,17 @@ const sites = [
     points: [
       {
         position: [8, 0, 10],
-        title: '🌑 Sunlight',
+        title: 'Sunlight',
         text: 'This crater receives very little direct sunlight. Solar panels would be difficult to use here.'
       },
       {
         position: [20, 0, -5],
-        title: '⛰️ Terrain',
+        title: 'Terrain',
         text: 'The crater has slopes and uneven ground. Landing and construction could be challenging.'
       },
       {
         position: [-8, 0, -15],
-        title: '🧊 Water ice',
+        title: 'Water ice',
         text: 'Permanently shadowed regions may preserve water ice because they remain extremely cold!'
       }
     ]
@@ -69,7 +67,6 @@ const sites = [
   {
     type: 'plain',
     name: 'Rocky Plain',
-    icon: '🏜️',
     description: 'A relatively flat area that may be suitable for landing.',
     look: {
       ground: 0x8a8a8a,
@@ -81,17 +78,17 @@ const sites = [
     points: [
       {
         position: [12, 0, 8],
-        title: '☀️ Sunlight',
+        title: 'Sunlight',
         text: 'This area receives a moderate amount of sunlight. Solar panels could be useful here.'
       },
       {
         position: [20, 0, -8],
-        title: '⛰️ Terrain',
+        title: 'Terrain',
         text: 'The relatively flat surface could make landing and building easier.'
       },
       {
         position: [5, 0, -18],
-        title: '🧊 Water ice',
+        title: 'Water ice',
         text: 'We still need to investigate whether water ice can be found nearby.'
       }
     ]
@@ -213,7 +210,7 @@ function showSiteMenu() {
                 data-site="${index}"
                 ${explored ? 'disabled' : ''}
             >
-                <span class="site-icon">${site.icon}</span>
+              
 
                 <span class="site-name">${site.name}</span>
 
@@ -567,7 +564,7 @@ function finishSite() {
     exploredSites.add(activeSiteIndex);
 
     showPanel(
-        'Exploration complete! 🎉',
+        'Exploration complete!',
         `You have successfully explored ${currentSite.name}. 
          You can now return to the lunar map and choose another location.`,
         'Return to locations ↗',
@@ -629,7 +626,7 @@ function startSite(index) {
     showPanel(
         `${currentSite.icon} Welcome to ${currentSite.name}`,
         `${currentSite.description} Follow Cosmo to discover this location.`,
-        'Start exploring 🚀',
+        'Start exploring ',
         startPoint
     );
 }
@@ -646,12 +643,12 @@ function showComparison() {
 
     const choices = sites.map((site, index) => `
         <button class="choice-btn" data-site="${index}">
-            ${site.icon} Choose ${site.name}
+             Choose ${site.name}
         </button>
     `).join('');
 
     panel.innerHTML = `
-        <h3>All locations explored! 🌙</h3>
+        <h3>All locations explored! </h3>
 
         <p>
             Excellent work, Junior Astronaut!
@@ -677,7 +674,7 @@ function showComparison() {
             localStorage.setItem('chosenLunarSite', chosen.name);
 
             showPanel(
-                `You selected ${chosen.name}! 🌙`,
+                `You selected ${chosen.name}!`,
                 `Your lunar base location has been selected. 
                  Your next mission is waiting!`,
                 'Return to missions',
