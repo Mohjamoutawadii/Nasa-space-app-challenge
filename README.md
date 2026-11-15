@@ -6,7 +6,7 @@
 
 Have you ever dreamed of walking on the Moon, exploring the unknown, and discovering what it takes to become an astronaut?
 
-With **AstroHeroes**, your space adventure begins right here!
+With **AstroHeroes** ( https://astroheroes.vercel.app/home.html) your space adventure begins right here!
 
 AstroHeroes is an interactive educational web experience designed to introduce children to lunar exploration through immersive 3D environments, guided missions, and decision-based challenges.
 
@@ -21,6 +21,7 @@ Players don't just read about space — they become astronauts, explore the luna
 AstroHeroes transforms lunar exploration into an adventure where curiosity is the key to success.
 
 The experience combines storytelling, interactive gameplay, and 3D visualization to help young explorers discover the challenges of establishing and maintaining a lunar base.
+
 
 ### Mission 01 — Choose Your Lunar Base
 
@@ -158,6 +159,7 @@ It helped our team with:
 - Debugging and improving code.
 - Exploring ans implementing responsive design and 3D integration.
 - Brainstorming gameplay mechanics and interactive experiences.
+- Writing and refining some in-app descriptions, educational explanations, mission instructions, and technical content.
 
 **Important:** AI was used as an assistant throughout development. Project decisions and final validation remained the responsibility of our team.
 
@@ -173,7 +175,7 @@ We believe in giving credit where credit is due.
 
 **Special credit:**
 
-- **3D Astronaut Model:** [Astronaut Figure Crafted by Jerovdl – Sketchfab](https://sketchfab.com/3d-models/astronaut-figure-crafted-by-jerovdl-36e3390138f049589a99aa4b1fff44b2).
+- **3D Astronaut Model:** [Astronaut Figure Crafted by Jerovdl – Sketchfab](https://sketchfab.com/3d-models/animated-astronaut-in-space-suit-loop-137d62cd820a4a6eba75304a11fb6f81).
 
 
 ### NASA Educational Resources
