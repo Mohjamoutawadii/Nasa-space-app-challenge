@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorer Certificate | AstroHeroes</title>
+    <link rel="stylesheet" href="/src/css/certif.css">
+</head>
+<body>
+
+    <div class="stars-background"></div>
+
+    <header class="topbar">
+        <a href="/path.html" class="brand">
+            <span class="brand-symbol">✦</span>
+            <span>ASTROHEROES</span>
+        </a>
+
+        <a href="/path.html" class="back-link">← MISSION PATH</a>
+    </header>
+
+    <main class="certificate-page">
+
+        <section class="page-heading">
+            <div class="success-tag">
+                <span class="success-dot"></span>
+                YOUR SPACE JOURNEY IS COMPLETE
+            </div>
+
+            <h1>YOU DID IT,<br><span>SPACE HERO!</span></h1>
+
+            <p>
+                Two missions. Countless discoveries.
+                Now it's time to celebrate your achievement!
+            </p>
+        </section>
+
+        <section class="certificate-workspace">
+
+            <div class="certificate-frame">
+
+                <canvas id="certificate-canvas" width="1600" height="1100">
+                    Your certificate preview.
+                </canvas>
+
+            </div>
+
+            <div class="certificate-controls">
+
+                <div class="control-heading">
+                    <span class="control-icon">✎</span>
+                    <div>
+                        <h2>Make it yours!</h2>
+                        <p>Enter your name to personalise your certificate.</p>
+                    </div>
+                </div>
+
+                <label for="student-name">EXPLORER'S NAME</label>
+
+                <input
+                    type="text"
+                    id="student-name"
+                    maxlength="28"
+                    placeholder="Enter your name..."
+                    autocomplete="off"
+                >
+
+                <button id="download-button" class="download-button">
+                    <span>↓</span>
+                    DOWNLOAD MY CERTIFICATE
+                </button>
+
+                <p class="download-note">
+                    <span>✦</span>
+                    Your certificate will be downloaded as a high-quality PNG.
+                </p>
+
+                <a href="/path.html" class="return-link">
+                    BACK TO MY SPACE JOURNEY →
+                </a>
+
+            </div>
+
+        </section>
+
+       
+
+    </main>
+
+    <section id="locked-screen" class="locked-screen hidden">
+        <div class="locked-card">
+            <div class="lock-icon">🔒</div>
+            <span class="locked-eyebrow">CERTIFICATE LOCKED</span>
+            <h2>One more adventure awaits!</h2>
+            <p>
+                Complete Mission 02 to earn your official Lunar Explorer
+                certificate. Cosmo is waiting for you!
+            </p>
+            <a href="/path.html" class="download-button">
+                RETURN TO MISSION PATH →
+            </a>
+        </div>
+    </section>
+
+    <script type="module" src="/src/js/certif.js"></script>
+
+</body>
+</html>

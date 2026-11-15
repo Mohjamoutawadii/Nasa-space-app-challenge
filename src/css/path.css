@@ -1,205 +1,591 @@
 
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap");
+
+/* =========================================
+   1. GLOBAL
+========================================= */
+
+:root {
+    --bg: #050918;
+    --cyan: #70e8ff;
+    --blue: #438cff;
+    --purple: #9278ff;
+    --gold: #ffd778;
+    --white: #f4f7ff;
+    --muted: #91a3c7;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    color: white;
-    min-height: 100vh;
-    background: radial-gradient(circle at top, #202e5b, #10152f 65%, #080d20);
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
 }
 
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "DM Sans", sans-serif;
+    color: var(--white);
+
+    background:
+        radial-gradient(ellipse at 15% 25%, rgba(42, 115, 220, 0.18), transparent 35%),
+        radial-gradient(ellipse at 85% 75%, rgba(112, 79, 210, 0.15), transparent 38%),
+        linear-gradient(135deg, #101a37, var(--bg) 75%);
+}
+
+/* =========================================
+   2. BACKGROUND STARS
+========================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, white 90%, transparent),
+        radial-gradient(1px 1px at 30% 75%, white 90%, transparent),
+        radial-gradient(2px 2px at 65% 15%, white 90%, transparent),
+        radial-gradient(1px 1px at 82% 60%, white 90%, transparent),
+        radial-gradient(1px 1px at 50% 45%, white 90%, transparent),
+        radial-gradient(2px 2px at 93% 85%, white 90%, transparent);
+
+    background-size: 300px 300px;
+    opacity: 0.65;
+}
+
+/* =========================================
+   3. HEADER
+========================================= */
+
 .top-bar {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    min-height: 76px;
+    padding: 0 6%;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 22px 40px;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(5, 10, 27, 0.75);
+    backdrop-filter: blur(16px);
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
     color: white;
-    font-size: 21px;
-    font-weight: bold;
     text-decoration: none;
-    letter-spacing: 1px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
 }
 
-.top-bar span {
-    color: #69d9ff;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
+.top-bar > span {
+    color: var(--cyan);
+    font-family: "Orbitron", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
 }
+
+/* =========================================
+   4. PAGE HEADING
+========================================= */
 
 .journey-container {
+    width: min(1150px, 94%);
+    margin: 0 auto;
+    padding: 65px 0 80px;
     text-align: center;
-    padding: 25px 15px 70px;
 }
 
 .journey-container h1 {
-    color: #ffd66b;
-    font-size: clamp(27px, 4vw, 40px);
-    margin-bottom: 12px;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(27px, 4vw, 42px);
+    letter-spacing: 1px;
+    text-shadow: 0 0 30px rgba(112, 232, 255, 0.15);
 }
 
 .subtitle {
-    color: #dceaff;
-    font-size: 15px;
+    margin-top: 13px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
 }
 
-
+/* =========================================
+   5. JOURNEY MAP - DESKTOP
+========================================= */
 
 .journey-map {
     position: relative;
-    width: min(100%, 480px);
-    height: 1100px;
-    margin: 35px auto 0;
+    width: min(1050px, 100%);
+    height: 390px;
+    margin: 75px auto 0;
 }
 
 .journey-route {
     position: absolute;
     inset: 0;
+    z-index: 0;
+
     width: 100%;
     height: 100%;
-    z-index: 0;
+
+    pointer-events: none;
     overflow: visible;
 }
 
+.desktop-route {
+    display: block;
+}
+
+.mobile-route {
+    display: none;
+}
+
+.journey-route path {
+    fill: none;
+    stroke: rgba(112, 232, 255, 0.4);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 3 12;
+}
+
+/* =========================================
+   6. MAP POINTS
+========================================= */
 
 .map-point {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
+    width: 175px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 170px;
-    transform: translateX(-50%);
+
     text-align: center;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease;
 }
 
 .point-circle {
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #777f91;
-    border: 7px solid #cbd0d9;
-    box-shadow: 0 6px 0 #687184;
-    text-decoration: none;
+    position: relative;
+    width: 82px;
+    height: 82px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(155, 177, 220, 0.2);
+    border-radius: 25px;
+
+    background: linear-gradient(145deg, #202d4b, #101a33);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+
     font-size: 30px;
+    transition: 0.3s ease;
 }
 
 .point-circle span {
     filter: grayscale(1);
-}
-
-
-
-.span,
-.start-circle span,
-.certificate-circle span {
-    filter: none;
-}
-
-.start-circle {
-    width: 64px;
-    height: 64px;
-    background: #20c8b7;
-    border-color: #b9fff4;
-    box-shadow: 0 5px 0 #139c91;
-}
-
-.certificate-circle {
-    background: #b58a35;
-    border-color: #ffe4a1;
-    box-shadow: 0 6px 0 #82601e;
+    opacity: 0.4;
+    transition: 0.3s ease;
 }
 
 .point-label {
-    margin-top: 12px;
-    padding: 7px 13px;
-    border-radius: 12px;
-    background: #626c80;
-    color: white;
-    font-size: 11px;
-    font-weight: bold;
-    white-space: nowrap;
-}
+    margin-top: 15px;
+    padding: 9px 13px;
 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+
+    background: rgba(15, 26, 52, 0.95);
+    color: #8797b5;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: 0.3s ease;
+}
 
 .mission-name {
-    margin-top: 8px;
-    font-size: 13px;
-    font-weight: bold;
-    color: #dceaff;
-    max-width: 170px;
+    margin-top: 9px;
+    max-width: 175px;
+
+    color: #8191af;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
 }
 
-
-.locked-point {
-    opacity: 0.95;
-    pointer-events: none;
-}
-
+/* =========================================
+   7. DESKTOP POINT POSITIONS
+========================================= */
 
 .start-point {
-    top: 20px;
-    left: 50%;
+    top: 128px;
+    left: 8%;
 }
 
 .mission-one {
-    top: 175px;
-    left: 27.5%;
+    top: 105px;
+    left: 31%;
 }
 
 .mission-two {
-    top: 405px;
-    left: 72.5%;
-}
-
-.mission-three {
-    top: 655px;
-    left: 27.5%;
+    top: 145px;
+    left: 63%;
 }
 
 .certificate-point {
-    top: 930px;
-    left: 65%;
+    top: 128px;
+    left: 92%;
 }
 
+/* =========================================
+   8. START POINT
+========================================= */
 
-@media (max-width: 500px) {
+.start-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+    background: linear-gradient(145deg, #1a9f9b, #126b80);
+    border: 1px solid rgba(105, 255, 236, 0.8);
+
+    box-shadow:
+        0 0 25px rgba(44, 227, 211, 0.35),
+        0 0 60px rgba(44, 227, 211, 0.13);
+}
+
+.start-circle span {
+    filter: none;
+    opacity: 1;
+}
+
+.start-point .point-label {
+    color: #8cf5e8;
+    border-color: rgba(44, 227, 211, 0.4);
+}
+
+/* =========================================
+   9. CERTIFICATE POINT
+========================================= */
+
+.certificate-circle {
+    width: 76px;
+    height: 76px;
+
+    background: linear-gradient(145deg, #59452a, #30243a);
+    border-color: rgba(255, 215, 120, 0.35);
+}
+
+.certificate-point .point-circle span {
+    filter: none;
+    opacity: 0.85;
+}
+
+.certificate-point .point-label {
+    color: #d5b975;
+    border-color: rgba(255, 215, 120, 0.25);
+}
+
+/* =========================================
+   10. LOCKED POINTS
+========================================= */
+
+.map-point.locked-point {
+    opacity: 1;
+    pointer-events: none;
+}
+
+.map-point.locked-point .point-circle {
+    background: linear-gradient(145deg, #18223a, #10182c);
+    border-color: rgba(135, 151, 185, 0.13);
+    box-shadow: none;
+}
+
+.map-point.locked-point .point-label {
+    color: #74819c;
+    background: rgba(20, 29, 49, 0.85);
+    border-color: rgba(135, 151, 185, 0.12);
+}
+
+.map-point.locked-point .mission-name {
+    color: #66748f;
+}
+
+/* =========================================
+   11. UNLOCKED POINTS
+========================================= */
+
+.map-point.unlocked-point {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.map-point.unlocked-point .point-circle {
+    background: linear-gradient(145deg, #174d78, #14294e);
+    border: 1px solid rgba(101, 220, 255, 0.85);
+
+    box-shadow:
+        0 0 18px rgba(101, 220, 255, 0.25),
+        0 0 45px rgba(67, 140, 255, 0.13);
+}
+
+.map-point.unlocked-point .point-circle span {
+    filter: none;
+    opacity: 1;
+}
+
+.map-point.unlocked-point .point-label {
+    color: var(--cyan);
+    border-color: rgba(101, 220, 255, 0.4);
+    background: rgba(22, 54, 88, 0.95);
+}
+
+.map-point.unlocked-point .mission-name {
+    color: #d7e8ff;
+}
+
+.map-point.unlocked-point:hover {
+    transform: translateX(-50%) translateY(-8px);
+}
+
+.map-point.unlocked-point:hover .point-circle {
+    box-shadow:
+        0 0 28px rgba(101, 220, 255, 0.5),
+        0 0 65px rgba(67, 140, 255, 0.22);
+}
+
+/* =========================================
+   12. COMPLETED POINTS
+========================================= */
+
+.map-point.completed-point .point-circle {
+    background: linear-gradient(145deg, #174d78, #14294e);
+    border: 1px solid rgba(101, 220, 255, 0.85);
+}
+
+.map-point.completed-point .point-circle span {
+    filter: none;
+    opacity: 1;
+}
+
+.map-point.completed-point .point-circle::after {
+    content: "✓";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+
+    width: 25px;
+    height: 25px;
+
+    display: grid;
+    place-items: center;
+
+    border: 2px solid #0b1932;
+    border-radius: 50%;
+
+    background: #28d6a2;
+    color: #062b2b;
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.map-point.completed-point .point-label {
+    color: #7ff0c7;
+    border-color: rgba(40, 214, 162, 0.4);
+}
+
+/* =========================================
+   13. CERTIFICATE UNLOCKED
+========================================= */
+
+.certificate-point.unlocked-point .point-circle {
+    background: linear-gradient(145deg, #99732e, #61441d);
+    border-color: var(--gold);
+    box-shadow: 0 0 30px rgba(255, 215, 120, 0.3);
+}
+
+.certificate-point.unlocked-point .point-label {
+    color: var(--gold);
+    border-color: rgba(255, 215, 120, 0.5);
+}
+
+/* =========================================
+   14. TABLET - VERTICAL MAP
+   768px to 1024px
+========================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
 
     .top-bar {
-        padding: 18px 15px;
-    }
-
-    .logo {
-        font-size: 16px;
-    }
-
-    .top-bar span {
-        font-size: 10px;
+        min-height: 72px;
+        padding: 0 5%;
     }
 
     .journey-container {
-        padding-top: 20px;
+        width: 94%;
+        padding: 45px 0 65px;
+    }
+
+    .journey-container h1 {
+        font-size: 34px;
     }
 
     .subtitle {
-        font-size: 13px;
+        font-size: 14px;
     }
 
+    /* Vertical map */
+
     .journey-map {
+        width: min(600px, 100%);
+        height: 900px;
+        margin: 45px auto 0;
+    }
+
+    .desktop-route {
+        display: none;
+    }
+
+    .mobile-route {
+        display: block;
+    }
+
+    .map-point {
+        width: 180px;
+    }
+
+    .point-circle {
+        width: 76px;
+        height: 76px;
+        border-radius: 23px;
+        font-size: 29px;
+    }
+
+    .start-circle {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+    }
+
+    .certificate-circle {
+        width: 76px;
+        height: 76px;
+    }
+
+    .point-label {
+        margin-top: 12px;
+        padding: 9px 13px;
+        font-size: 9px;
+    }
+
+    .mission-name {
+        font-size: 12px;
+        max-width: 180px;
+    }
+
+    /* Positions follow the SVG route */
+
+    .start-point {
+        top: 10px;
+        left: 50%;
+    }
+
+    .mission-one {
+        top: 165px;
+        left: 24%;
+    }
+
+    .mission-two {
+        top: 345px;
+        left: 75%;
+    }
+
+    .certificate-point {
+        top: 520px;
+        left: 34%;
+    }
+}
+
+/* =========================================
+   15. MOBILE
+   Up to 767px
+========================================= */
+
+@media (max-width: 767px) {
+
+    .top-bar {
+        min-height: 65px;
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .top-bar > span {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    .journey-container {
         width: 100%;
-        max-width: 380px;
-        height: 1000px;
-        margin-top: 30px;
+        padding: 38px 15px 55px;
+    }
+
+    .journey-container h1 {
+        font-size: clamp(23px, 6vw, 29px);
+        line-height: 1.35;
+    }
+
+    .subtitle {
+        max-width: 330px;
+        margin: 11px auto 0;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    /* Vertical mobile map */
+
+    .journey-map {
+        width: min(100%, 420px);
+        height: 790px;
+        margin: 38px auto 0;
+    }
+
+    .desktop-route {
+        display: none;
+    }
+
+    .mobile-route {
+        display: block;
     }
 
     .map-point {
@@ -207,106 +593,169 @@ body {
     }
 
     .point-circle {
-        width: 65px;
-        height: 65px;
-        font-size: 25px;
+        width: 70px;
+        height: 70px;
+        border-radius: 21px;
+        font-size: 26px;
     }
 
     .start-circle {
-        width: 55px;
-        height: 55px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+
+    .certificate-circle {
+        width: 70px;
+        height: 70px;
     }
 
     .point-label {
-        font-size: 10px;
-        padding: 6px 10px;
+        margin-top: 11px;
+        padding: 8px 10px;
+        font-size: 8px;
+        letter-spacing: 0.7px;
     }
 
     .mission-name {
+        max-width: 145px;
+        margin-top: 7px;
         font-size: 11px;
+        line-height: 1.5;
     }
 
-    .stars {
-        font-size: 15px;
-    }
+    /* Positions */
 
     .start-point {
-        top: 10px;
+        top: 5px;
+        left: 50%;
     }
 
     .mission-one {
-        top: 155px;
-    }
-
-    .mission-two {
-        top: 365px;
-    }
-
-    .mission-three {
-        top: 585px;
-    }
-
-    .certificate-point {
-        top: 850px;
-    }
-}
-
-.desktop-route {
-    display: none;
-}
-
-.mobile-route {
-    display: block;
-}
-
-
-@media (min-width: 768px) {
-
-    .journey-container {
-        padding-top: 35px;
-    }
-
-    .journey-map {
-        width: min(1100px, 95%);
-        height: 330px;
-        margin: 70px auto 0;
-    }
-
-    .desktop-route {
-        display: block;
-    }
-
-    .mobile-route {
-        display: none;
-    }
-
-    .map-point {
-        width: 170px;
-    }
-
-    .start-point {
-        top: 105px;
-        left: 8%;
-    }
-
-    .mission-one {
-        top: 105px;
+        top: 140px;
         left: 28%;
     }
 
     .mission-two {
-        top: 105px;
-        left: 50%;
-    }
-
-    .mission-three {
-        top: 105px;
+        top: 297px;
         left: 72%;
     }
 
     .certificate-point {
-        top: 105px;
-        left: 92%;
+        top: 452px;
+        left: 35%;
     }
 
+    /* Disable hover movement on touch screens */
+
+    .map-point.unlocked-point:hover {
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================================
+   16. SMALL PHONES
+   Up to 380px
+========================================= */
+
+@media (max-width: 380px) {
+
+    .top-bar {
+        min-height: 60px;
+        padding: 0 14px;
+    }
+
+    .logo {
+        font-size: 10px;
+        letter-spacing: 0.7px;
+    }
+
+    .top-bar > span {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .journey-container {
+        padding: 32px 10px 45px;
+    }
+
+    .journey-container h1 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+    }
+
+    .journey-map {
+        width: 100%;
+        height: 750px;
+        margin-top: 30px;
+    }
+
+    .map-point {
+        width: 125px;
+    }
+
+    .point-circle {
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+        font-size: 24px;
+    }
+
+    .start-circle {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+    }
+
+    .certificate-circle {
+        width: 62px;
+        height: 62px;
+    }
+
+    .point-label {
+        padding: 7px 8px;
+        font-size: 7px;
+        letter-spacing: 0.4px;
+    }
+
+    .mission-name {
+        max-width: 125px;
+        font-size: 10px;
+    }
+
+    .start-point {
+        top: 5px;
+        left: 50%;
+    }
+
+    .mission-one {
+        top: 140px;
+        left: 27%;
+    }
+
+    .mission-two {
+        top: 297px;
+        left: 73%;
+    }
+
+    .certificate-point {
+        top: 452px;
+        left: 35%;
+    }
+}
+
+/* =========================================
+   17. REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }

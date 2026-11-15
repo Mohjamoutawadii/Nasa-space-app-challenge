@@ -1,0 +1,416 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap');
+
+:root {
+    --cyan: #65e8ff;
+    --purple: #a18cff;
+    --pink: #ff91c8;
+    --gold: #ffd875;
+    --dark: #080d24;
+    --muted: #a9b7d3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    color: #fff;
+    background:
+        radial-gradient(ellipse at 15% 25%, rgba(67, 72, 164, 0.25), transparent 35%),
+        radial-gradient(ellipse at 85% 70%, rgba(119, 55, 154, 0.2), transparent 35%),
+        #080d24;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+.stars-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, white, transparent),
+        radial-gradient(2px 2px at 80px 100px, #8deaff, transparent),
+        radial-gradient(1px 1px at 140px 60px, white, transparent),
+        radial-gradient(2px 2px at 200px 150px, #c3a9ff, transparent);
+    background-size: 250px 200px;
+}
+
+.topbar {
+    position: relative;
+    z-index: 2;
+    height: 76px;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.brand-symbol {
+    font-size: 25px;
+    color: var(--cyan);
+}
+
+.back-link {
+    color: #b7c4dc;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.back-link:hover,
+.return-link:hover {
+    color: var(--cyan);
+}
+
+.certificate-page {
+    position: relative;
+    z-index: 1;
+    width: min(1200px, 92%);
+    margin: auto;
+    padding: 55px 0 25px;
+}
+
+.page-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.success-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 15px;
+    border: 1px solid rgba(101,230,177,0.25);
+    border-radius: 30px;
+    background: rgba(101,230,177,0.07);
+    color: #91e9c4;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8px;
+    letter-spacing: 1.4px;
+}
+
+.success-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #65e6b1;
+    box-shadow: 0 0 10px #65e6b1;
+}
+
+.page-heading h1 {
+    margin: 23px 0 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(34px, 5vw, 55px);
+    line-height: 1.2;
+    letter-spacing: 2px;
+}
+
+.page-heading h1 span {
+    color: var(--cyan);
+    text-shadow: 0 0 30px rgba(101,232,255,0.2);
+}
+
+.page-heading p {
+    max-width: 490px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* WORKSPACE */
+
+.certificate-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(250px, 0.8fr);
+    align-items: center;
+    gap: 28px;
+}
+
+.certificate-frame {
+    position: relative;
+    padding: 10px;
+    border: 1px solid rgba(123, 197, 255, 0.25);
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(103, 155, 255, 0.12), rgba(164, 123, 255, 0.06));
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.3),
+        0 0 40px rgba(100,160,255,0.08);
+}
+
+#certificate-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* CONTROLS */
+
+.certificate-controls {
+    padding: 25px 22px;
+    border: 1px solid rgba(123, 197, 255, 0.2);
+    border-radius: 13px;
+    background: rgba(13, 23, 49, 0.8);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.18);
+}
+
+.control-heading {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.control-icon {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: rgba(101,232,255,0.12);
+    color: var(--cyan);
+    font-size: 19px;
+}
+
+.control-heading h2 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.control-heading p {
+    color: #8fa1bd;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.certificate-controls label {
+    display: block;
+    margin-bottom: 9px;
+    color: #8fa5c3;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8px;
+    letter-spacing: 1.3px;
+}
+
+#student-name {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(135,180,230,0.25);
+    border-radius: 7px;
+    outline: none;
+    background: rgba(3,10,27,0.75);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+#student-name::placeholder {
+    color: #62738f;
+}
+
+#student-name:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(101,232,255,0.08);
+}
+
+.download-button {
+    width: 100%;
+    min-height: 49px;
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 7px;
+    background: linear-gradient(100deg, #64e8ff, #9bdcff);
+    color: #07152a;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.download-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 25px rgba(101,232,255,0.22);
+}
+
+.download-button span {
+    font-size: 19px;
+}
+
+.download-note {
+    margin-top: 14px;
+    color: #879ab8;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.download-note span {
+    color: var(--gold);
+}
+
+.return-link {
+    display: inline-block;
+    margin-top: 27px;
+    color: #aebed6;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8px;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+/* FOOTER */
+
+.page-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 55px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    color: #657795;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+/* LOCKED STATE */
+
+.locked-screen {
+    position: fixed;
+    z-index: 20;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(4,8,24,0.95);
+    backdrop-filter: blur(12px);
+}
+
+.locked-card {
+    width: min(420px, 100%);
+    padding: 38px;
+    text-align: center;
+    border: 1px solid rgba(123,197,255,0.25);
+    border-radius: 16px;
+    background: #101b38;
+}
+
+.lock-icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.locked-eyebrow {
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.locked-card h2 {
+    margin: 17px 0 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+}
+
+.locked-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.locked-card .download-button {
+    margin-top: 25px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .certificate-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .certificate-controls {
+        max-width: 550px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .certificate-page {
+        padding-top: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+    .topbar {
+        padding: 0 5%;
+    }
+
+    .brand {
+        font-size: 10px;
+    }
+
+    .back-link {
+        font-size: 8px;
+    }
+
+    .certificate-page {
+        width: 94%;
+        padding-top: 35px;
+    }
+
+    .page-heading {
+        margin-bottom: 25px;
+    }
+
+    .page-heading p {
+        font-size: 11px;
+    }
+
+    .certificate-frame {
+        padding: 5px;
+    }
+
+    .certificate-controls {
+        padding: 20px 16px;
+    }
+
+    .page-footer {
+        font-size: 6px;
+    }
+}

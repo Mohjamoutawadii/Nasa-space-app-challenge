@@ -1,11 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --background: #070b1d;
+    --cyan: #62e4ff;
+    --blue: #438bff;
+    --purple: #8b70ff;
+    --orange: #ffad70;
+    --white: #f5f7ff;
+    --muted: #929bbd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-image: url("../assets/space home page.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(ellipse at 25% 55%, #192b55 0%, transparent 43%),
+        radial-gradient(ellipse at 85% 15%, #20204b 0%, transparent 38%),
+        var(--background);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* BACKGROUND */
+
+#stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: .2; }
+    50% { opacity: 1; }
+}
+
+.background-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    top: 30%;
+    left: 15%;
+    border-radius: 50%;
+    background: #287bff;
+    filter: blur(180px);
+    opacity: .12;
+    pointer-events: none;
 }
 
 .logo {

@@ -1,36 +1,103 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission 1 | AstroHeroes</title>
+    <title>AstroHeroes - Mission 1</title>
     <link rel="stylesheet" href="/src/css/mission1.css">
 </head>
+
 <body>
 
-    <header class="top-bar">
-        <a href="home.html" class="logo">🚀 ASTROHEROES</a>
-        <span class="mission-number">MISSION 01</span>
-    </header>
+    <div id="stars"></div>
+    <div class="background-glow"></div>
 
-    <main class="mission-container">
+    <main class="briefing-container">
 
-        <section class="mission-intro">
-            <h1>Find the Perfect Landing Site!</h1>
+        <header class="top-bar">
+            <a href="/path.html" class="back-link">← BACK TO JOURNEY</a>
+            <div class="mission-tag">
+                <span class="status-dot"></span>
+                MISSION 01 / BRIEFING
+            </div>
+        </header>
 
-            <p>
-                Your mission is to help Cosmo find the best location
-                to build a lunar base near the Moon's South Pole.
+        <section class="briefing-heading">
+            <p class="eyebrow">LUNAR EXPLORATION PROGRAM</p>
+            <h1>FIND THE PERFECT <span>LUNAR BASE</span></h1>
+            <p class="subtitle">
+                Your journey to the Moon's South Pole begins here.
             </p>
         </section>
 
         <section class="mission-content">
-            <!-- Mission activity will go here -->
+
+            <div class="astronaut-side">
+
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+
+                <div class="astronaut-glow"></div>
+
+                <div class="astronaut-container">
+                    <canvas id="astronaut-canvas"></canvas>
+                </div>
+
+                <div class="astronaut-label">
+                    <span class="cosmo-status"></span>
+                    YOUR COMPANION
+                    <strong>COSMO</strong>
+                </div>
+
+            </div>
+
+            <section class="dialogue-box">
+
+                <div class="dialogue-top">
+                    <div class="character-info">
+                        <div class="character-icon">✦</div>
+                        <div>
+                            <span class="speaker-label">MISSION GUIDE</span>
+                            <h2>Cosmo</h2>
+                        </div>
+                    </div>
+
+                    <span class="dialogue-counter" id="dialogue-counter">
+                        01 / 05
+                    </span>
+                </div>
+
+                <div class="dialogue-divider"></div>
+
+                <div class="dialogue-content">
+                    <span class="dialogue-eyebrow">INCOMING MESSAGE</span>
+                    <p id="dialogue-text">
+                        Hello, AstroHero! Welcome to the Lunar South Pole!
+                    </p>
+                </div>
+
+                <div class="dialogue-footer">
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="dialogue-progress"></div>
+                    </div>
+
+                    <button id="start-button">
+                        <span id="button-label">NEXT MESSAGE</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                </div>
+
+            </section>
+
         </section>
+
+       
 
     </main>
 
     <script type="module" src="/src/js/mission1.js"></script>
+
 </body>
 </html>

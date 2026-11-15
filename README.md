@@ -129,6 +129,17 @@ Special credit:
 
 Other images, textures, fonts, and resources should be credited to their respective creators and sources.
 
+
+### NASA Data & APIs
+AstroHeroes is built using open-source technologies and publicly available scientific resources.
+
+- **NASA DONKI (Space Weather Database):** [Solar flare and coronal mass ejection data] (https://api.nasa.gov/).
+
+- **NASA Goddard Space Flight Center:** [Scientific Visualization Studio (SVS) – Lunar South Pole videos and scientific visualizations] (https://svs.gsfc.nasa.gov/gallery/moonpole/).
+
+These materials are subject to NASA's media usage guidelines and any specific credits or restrictions indicated on their individual source pages. NASA materials are used for educational purposes. All rights remain subject to their respective usage guidelines.
+
+
 ### NASA Disclaimer
 
 AstroHeroes is an independent educational project developed for the NASA Space Apps Challenge.

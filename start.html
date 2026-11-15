@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroHeroes - Lunar South Pole</title>
+    <link rel="stylesheet" href="/src/css/start.css">
+</head>
+
+<body>
+
+    <div id="space-scene"></div>
+    <div class="dark-overlay"></div>
+
+    <header class="topbar">
+        <a href="home.html" class="logo">🚀 ASTROHEROES</a>
+        <span>MISSION BRIEFING</span>
+    </header>
+
+    <main>
+
+      
+        <section class="hero">
+            <div class="hero-content">
+
+                <p class="eyebrow">YOUR JOURNEY BEGINS HERE</p>
+
+                <h1>
+                    WELCOME TO THE
+                    <span>LUNAR SOUTH POLE</span>
+                </h1>
+
+                <p class="hero-description">
+                    A mysterious world of extreme light, deep shadows
+                    and hidden resources. Are you ready to explore it?
+                </p>
+
+                <button id="discover-button" class="primary-button">
+                    EXPLORE THE REGION ↓
+                   
+                </button>
+                  
+            </div>
+
+        </section>
+
+
+     
+        
+<section class="discovery-section" id="discoveries">
+
+    <div class="section-heading">
+        <h2>Explore the Lunar South Pole</h2>
+        <p>Discover the real terrain through NASA visualizations.</p>
+    </div>
+
+    <div class="video-carousel">
+
+        <button id="prev-video" class="carousel-arrow">❮</button>
+
+        <div class="video-frame">
+            <video id="lunar-video"
+                   autoplay
+                   muted
+                   loop
+                   playsinline
+                   controls>
+                <source src="/videos/Water on the Moon.mp4" type="video/mp4">
+            </video>
+
+            <div class="video-caption">
+                <h3 id="video-title">Lunar South Pole Terrain</h3>
+                <p id="video-description">
+                    Discover the lunar landscape and its elevation.
+                </p>
+                <span id="video-credit">NASA Scientific Visualization Studio</span>
+            </div>
+        </div>
+
+        <button id="next-video" class="carousel-arrow">❯</button>
+
+    </div>
+
+    <div class="video-dots" id="video-dots"></div>
+
+</section>
+
+
+
+            <p class="image-credit">
+                Lunar imagery and visualizations courtesy of
+        <a
+            href="https://svs.gsfc.nasa.gov/gallery/moonpole/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            NASA Goddard Space Flight Center –
+            Scientific Visualization Studio (SVS)
+        </a>.
+            </p>
+
+        </section>
+
+
+        <!-- SCIENTIFIC DISCOVERIES -->
+        <section class="facts-section">
+
+            <p class="eyebrow">WHY EXPLORE THIS REGION?</p>
+            <h2>Three Reasons to Go South</h2>
+
+            <div class="facts-grid">
+
+                <article class="fact-card">
+                    <div class="fact-icon">☀️</div>
+                    <h3>Extreme Sunlight</h3>
+                    <p>
+                        Some elevated areas near the South Pole can receive
+                        sunlight for long periods. This could help future
+                        explorers generate solar energy.
+                    </p>
+                    <span class="fact-tag">ENERGY POTENTIAL</span>
+                </article>
+
+                <article class="fact-card">
+                    <div class="fact-icon">🌑</div>
+                    <h3>Permanent Shadows</h3>
+                    <p>
+                        Some deep craters never receive direct sunlight.
+                        These permanently shadowed regions are among
+                        the coldest places on the Moon.
+                    </p>
+                    <span class="fact-tag">EXTREME ENVIRONMENT</span>
+                </article>
+
+                <article class="fact-card">
+                    <div class="fact-icon">💧</div>
+                    <h3>Possible Water Ice</h3>
+                    <p>
+                        Scientists have found evidence of water ice
+                        and other frozen materials in some lunar polar
+                        regions. More exploration is needed.
+                    </p>
+                    <span class="fact-tag">SCIENTIFIC DISCOVERY</span>
+                </article>
+
+            </div>
+
+        </section>
+
+
+       
+        <section class="cosmo-section">
+
+
+            <div class="cosmo-dialogue">
+
+                <h2>Ready for your mission, Explorer?</h2>
+            
+                <button id="start-button" class="primary-button start-button">
+                        START MISSION 01 🚀
+                </button>
+
+            </div>
+            
+
+
+        </section>
+
+    </main>
+
+ 
+
+    <script type="module" src="/src/js/start.js"></script>
+
+</body>
+</html>

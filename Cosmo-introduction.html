@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d20">
+
+    <title>Meet Cosmo | AstroHeroes</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/css/Cosmo-introduction.css">
+</head>
+
+<body>
+    <main class="meeting-screen">
+
+        <div class="background-glow"></div>
+        <div class="stars"></div>
+
+        <header class="top-bar">
+            <a href="home.html" class="logo">
+                <span class="logo-icon">✦</span>
+                ASTROHEROES
+            </a>
+
+            <a href="home.html" class="back-button">
+                <span>←</span> Home
+            </a>
+        </header>
+
+        <!-- TITLE: TOP CENTER -->
+        <section class="intro-heading">
+            <span class="eyebrow">A NEW FRIEND IN SPACE</span>
+            <h1>MEET <span>COSMO</span></h1>
+            <p>Your lunar adventure is about to begin.</p>
+        </section>
+
+        <!-- TWO COLUMNS: ASTRONAUT LEFT / DIALOGUE RIGHT -->
+        <section class="meeting-content">
+
+            <div class="astronaut-area">
+
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="astronaut-glow"></div>
+
+                <div id="game-container">
+                    
+                </div>
+
+            </div>
+
+            <section class="dialogue-box" aria-live="polite">
+
+                <div class="dialogue-header">
+
+                    <div class="speaker-info">
+                        <div class="speaker-avatar">🚀</div>
+
+                        <div>
+                            <p class="speaker-name">COSMO</p>
+                            <p class="speaker-role">Your friendly astronaut</p>
+                        </div>
+                    </div>
+
+                    <span class="dialogue-counter" id="dialogue-counter">
+                        01 / 04
+                    </span>
+
+                </div>
+
+                <div class="dialogue-divider"></div>
+
+                <p id="dialogue-text">
+                    Hello, Astro Hero! My name is Cosmo. It's great to meet you!
+                </p>
+
+                <div class="dialogue-footer">
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="dialogue-progress"></div>
+                    </div>
+
+                    <button id="next-button" type="button">
+                        <span id="button-label">NEXT</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="/src/js/Cosmo-introduction.js"></script>
+</body>
+</html>

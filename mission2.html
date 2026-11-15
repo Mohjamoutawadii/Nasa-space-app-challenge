@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission 02 | AstroHeroes</title>
+    <link rel="stylesheet" href="/src/css/mission2.css">
+</head>
+<body>
+    <main id="game">
+
+        <!-- 3D WORLD -->
+        <div id="scene-container"></div>
+
+        <!-- TOP HUD -->
+        <header class="game-header">
+            <div class="brand">
+                <span class="brand-icon">✦</span>
+                <div>
+                    <strong>ASTROHEROES</strong>
+                    <small>MISSION CONTROL</small>
+                </div>
+            </div>
+
+            <div class="mission-info">
+                <span class="live-dot"></span>
+                <span>MISSION 02</span>
+                <span class="separator">/</span>
+                <span id="base-name">LUNAR OUTPOST</span>
+            </div>
+
+            <div class="mission-progress">
+                <span id="incident-counter">EXPLORATION</span>
+                <div class="progress-track">
+                    <div id="progress-fill"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- RESOURCE HUD -->
+        <section class="resource-hud">
+            <div class="resource">
+                <div class="resource-heading">
+                    <span>⚡ ENERGY</span>
+                    <strong id="energy-value">85%</strong>
+                </div>
+                <div class="resource-track">
+                    <div id="energy-bar" class="resource-fill energy-fill"></div>
+                </div>
+            </div>
+
+            <div class="resource">
+                <div class="resource-heading">
+                    <span>◉ OXYGEN</span>
+                    <strong id="oxygen-value">85%</strong>
+                </div>
+                <div class="resource-track">
+                    <div id="oxygen-bar" class="resource-fill oxygen-fill"></div>
+                </div>
+            </div>
+
+            <div class="resource">
+                <div class="resource-heading">
+                    <span>♥ COSMO HEALTH</span>
+                    <strong id="health-value">100%</strong>
+                </div>
+                <div class="resource-track">
+                    <div id="health-bar" class="resource-fill health-fill"></div>
+                </div>
+            </div>
+
+            <div class="resource">
+                <div class="resource-heading">
+                    <span>⬡ BASE SAFETY</span>
+                    <strong id="safety-value">85%</strong>
+                </div>
+                <div class="resource-track">
+                    <div id="safety-bar" class="resource-fill safety-fill"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATION -->
+        <div class="location-indicator">
+            <span class="location-dot"></span>
+            <div>
+                <small>CURRENT LOCATION</small>
+                <strong id="location-name">LUNAR HABITAT</strong>
+            </div>
+        </div>
+
+        <!-- INTRO SCREEN -->
+        <section id="intro-screen" class="overlay-screen">
+            <div class="intro-card">
+                <span class="eyebrow">MISSION 02 · SURVIVAL PROTOCOL</span>
+                <h1>THE UNKNOWN<br><span>CHALLENGE</span></h1>
+                <p>
+                    Your lunar base is operational. But space is unpredictable.
+                    Explore the surroundings with Cosmo, respond to unexpected
+                    incidents and make decisions that will determine the
+                    survival of your crew.
+                </p>
+                <div class="intro-facts">
+                    <div><strong>03</strong><span>INCIDENTS</span></div>
+                    <div><strong>04</strong><span>RESOURCES</span></div>
+                    <div><strong>∞</strong><span>CONSEQUENCES</span></div>
+                </div>
+                <button id="start-button" class="primary-button">
+                    START EXPLORATION <span>→</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- COSMO DIALOGUE -->
+        <section id="dialogue-panel" class="dialogue-panel hidden">
+            <div class="cosmo-label">
+                <span class="cosmo-avatar">C</span>
+                <div>
+                    <strong>COSMO</strong>
+                    <small>YOUR LUNAR COMPANION</small>
+                </div>
+            </div>
+            <p id="dialogue-text"></p>
+            <button id="dialogue-button" class="secondary-button">
+                CONTINUE <span>→</span>
+            </button>
+        </section>
+
+        <!-- INCIDENT ALERT -->
+        <section id="incident-panel" class="incident-panel hidden">
+            <div class="incident-topline">
+                <span class="alert-indicator"></span>
+                <span id="incident-type">SYSTEM ALERT</span>
+                <span class="alert-tag">DECISION REQUIRED</span>
+            </div>
+
+            <h2 id="incident-title">UNEXPECTED EVENT</h2>
+            <p id="incident-description"></p>
+
+            <div class="choice-label">WHAT SHOULD COSMO DO?</div>
+            <div id="choices-container" class="choices-container"></div>
+
+            <p id="choice-feedback" class="choice-feedback hidden"></p>
+            <button id="confirm-button" class="primary-button hidden">
+                CONFIRM DECISION <span>→</span>
+            </button>
+        </section>
+
+        <!-- FINAL REPORT -->
+        <section id="report-screen" class="overlay-screen hidden">
+            <div class="report-card">
+                <span class="eyebrow">MISSION 02 · FINAL REPORT</span>
+                <h1 id="report-title">MISSION COMPLETE</h1>
+                <p id="report-description"></p>
+
+                <div class="report-resources">
+                    <div><span>ENERGY</span><strong id="final-energy">0%</strong></div>
+                    <div><span>OXYGEN</span><strong id="final-oxygen">0%</strong></div>
+                    <div><span>COSMO HEALTH</span><strong id="final-health">0%</strong></div>
+                    <div><span>BASE SAFETY</span><strong id="final-safety">0%</strong></div>
+                </div>
+
+                <div class="decision-summary">
+                    <h3>YOUR DECISIONS</h3>
+                    <div id="decision-list"></div>
+                </div>
+
+                <button id="finish-button" class="primary-button">
+                    RETURN TO MISSION PATH <span>→</span>
+                </button>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <script type="module" src="/src/js/mission2.js"></script>
+</body>
+</html>
